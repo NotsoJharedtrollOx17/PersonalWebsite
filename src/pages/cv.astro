@@ -1,0 +1,33 @@
+---
+import { getEntry, render } from "astro:content";
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+const cvEntry = await getEntry("pages", "cv");
+
+if (!cvEntry) {
+  throw new Error("CV entry not found in the pages collection");
+}
+
+// Render the Markdown body to HTML
+const { Content } = await render(cvEntry);
+---
+
+<BaseLayout title="Curriculum Vitae">
+  <nav>
+    <a href="/">Home</a>
+  </nav>
+
+  <section class="split">
+    <div class="left">
+      <h1>{cvEntry.data.title}</h1>
+      <p>Open Innovation Engineer · Machine Learning · Research</p>
+    </div>
+
+    <div class="right">
+      <article>
+        <!-- Rendered Markdown content -->
+        <Content />
+      </article>
+    </div>
+  </section>
+</BaseLayout>

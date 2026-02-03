@@ -1,0 +1,95 @@
+:root {
+  --font-heading: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+
+  --color-bg: #ffffff;
+  --color-text: #000000;
+  --color-muted: #666666;
+  --color-line: #000000;
+
+  --gap-xl: 4rem;
+  --gap-lg: 2.5rem;
+  --gap-md: 1.5rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+}
+
+/* Navigation */
+nav {
+  position: absolute;
+  top: 2rem;
+  right: 3rem;
+  display: flex;
+  gap: 2rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+/* Typography */
+h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(3.5rem, 7vw, 6rem);
+  font-weight: 800;
+  line-height: 0.95;
+  margin: 0;
+}
+
+h2 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  margin-top: var(--gap-lg);
+}
+
+p {
+  max-width: 48ch;
+  line-height: 1.6;
+  color: var(--color-muted);
+}
+
+/* Layout */
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+}
+
+.split > .left {
+  padding: var(--gap-xl);
+  border-right: 1px solid var(--color-line);
+}
+
+.split > .right {
+  padding: var(--gap-xl);
+}
+
+/* Mobile fallback */
+@media (max-width: 900px) {
+  .split {
+    grid-template-columns: 1fr;
+  }
+
+  .split > .left {
+    border-right: none;
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  nav {
+    right: 1.5rem;
+  }
+}

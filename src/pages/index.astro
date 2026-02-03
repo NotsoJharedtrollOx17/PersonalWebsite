@@ -1,17 +1,23 @@
 ---
-
+import BaseLayout from "@layouts/BaseLayout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="Abraham Flores">
+  <nav>
+    <a href="/">Home</a>
+    <a href="/cv">CV</a>
+  </nav>
+
+  <section class="split">
+    <div class="left">
+      <h1>ABRAHAM<br />FLORES</h1>
+      <p>Open Innovation Engineer working on AI-focused proof-of-concept development, machine learning, and research systems.</p>
+    </div>
+
+    <div class="right">
+      <!--
+		<img src="/images/architecture.jpg" alt="Architectural abstraction" style="width:100%; height:auto;" />
+		-->
+    </div>
+  </section>
+</BaseLayout>
