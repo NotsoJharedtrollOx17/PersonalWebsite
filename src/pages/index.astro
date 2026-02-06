@@ -4,8 +4,10 @@
  * of the website. THIS IS Astro's STARTING POINT. 
  * DO NOT DELETE!
  */
+import { Image } from "astro:assets";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import LocalNavLink from "@components/LocalNavLink.astro";
+import GlitchInTheSystem from "@images/glitchInTheSystem.png";
 ---
 
 <BaseLayout pageTitle="Abraham Flores">
@@ -24,9 +26,7 @@ import LocalNavLink from "@components/LocalNavLink.astro";
     </div>
 
     <div class="right">
-      <!--
-		<img src="/images/architecture.jpg" alt="Architectural abstraction" style="width:100%; height:auto;" />
-		-->
+      <Image src={GlitchInTheSystem} alt="Thumbnail with blue and green distortions." />
     </div>
   </section>
 </BaseLayout>
