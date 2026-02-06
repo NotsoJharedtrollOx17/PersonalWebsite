@@ -1,11 +1,12 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
+import NavigationLink from "@components/NavigationLink.astro";
 ---
 
 <BaseLayout title="Abraham Flores">
   <nav>
-    <a href="/">Home</a>
-    <a href="/cv">CV</a>
+    <NavigationLink navItem="">Home</NavigationLink>
+    <NavigationLink navItem="/cv">CV</NavigationLink>
   </nav>
 
   <section class="split">

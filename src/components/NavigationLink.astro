@@ -1,0 +1,7 @@
+---
+const { navItem } = Astro.props;
+---
+
+<a href={`${import.meta.env.BASE_URL}${navItem}`}>
+    <slot />
+</a>
