@@ -5,13 +5,13 @@
  * DO NOT DELETE!
  */
 import BaseLayout from "@layouts/BaseLayout.astro";
-import NavigationLink from "@components/NavigationLink.astro";
+import LocalNavLink from "@components/LocalNavLink.astro";
 ---
 
 <BaseLayout pageTitle="Abraham Flores">
   <nav>
-    <NavigationLink navItem="">Home</NavigationLink>
-    <NavigationLink navItem="cv">CV</NavigationLink>
+    <LocalNavLink navPage="">Home</LocalNavLink>
+    <LocalNavLink navPage="cv">CV</LocalNavLink>
   </nav>
 
   <section class="split">

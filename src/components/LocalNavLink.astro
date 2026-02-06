@@ -1,0 +1,19 @@
+---
+/**
+ * Component that wraps the 'base' astro.config.mjs parameter 
+ * and concats said value with 'navPage'.
+ * 
+ * E.g: if ./src/content/pages/cv.md, then navPage = 'cv'
+ */
+const { navPage } = Astro.props;
+
+// [1] Appends '/' if the entry is not blank.
+var page: string = '';
+if (navPage !== '') {
+    page = '/' + navPage;
+}
+---
+
+<a href={`${import.meta.env.BASE_URL}${page}`}>
+    <slot />
+</a>
