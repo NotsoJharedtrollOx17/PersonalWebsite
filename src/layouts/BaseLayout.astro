@@ -5,7 +5,7 @@
  */
 import "@styles/brutalist.css"; // ! ALWAYS IMPORT CSS FILES INTO THE ASTRO FRONTMATTER
 
-const { title } = Astro.props;
+const { pageTitle } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -19,7 +19,7 @@ const { title } = Astro.props;
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Space+Grotesk:wght@600;700;800&display=swap"
     />
-    <title>{title}</title>
+    <title>{pageTitle}</title>
   </head>
   
   <body>
