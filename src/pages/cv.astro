@@ -1,15 +1,18 @@
 ---
+/**
+ * Page Component that loads the 'cv.md' file into the webpage.
+ */
 import { getEntry, render } from "astro:content";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import NavigationLink from "@components/NavigationLink.astro";
 
+// [1] Load .src/content/pages/cv.md into page
 const cvEntry = await getEntry("pages", "cv");
-
 if (!cvEntry) {
   throw new Error("CV entry not found in the pages collection");
 }
 
-// Render the Markdown body to HTML
+// [2] Render the Markdown body to HTML as 'Render' Component
 const { Content } = await render(cvEntry);
 ---
 
@@ -26,7 +29,7 @@ const { Content } = await render(cvEntry);
 
     <div class="right">
       <article>
-        <!-- Rendered Markdown content -->
+        <!-- * Rendered Markdown content -->
         <Content />
       </article>
     </div>

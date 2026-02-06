@@ -1,4 +1,10 @@
 ---
+/**
+ * Component that wraps the 'base' astro.config.mjs parameter 
+ * and concats said value with the 'navItem' page name.
+ * 
+ * E.g: if ./src/content/pages/cv.md, then navItem = 'cv'
+ */
 const { navItem } = Astro.props;
 ---
 
