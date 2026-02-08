@@ -97,15 +97,22 @@ p {
 -------------------------------------------------- */
 
 img {
-  max-width: 100%;
+  max-width: 125%;
   height: auto;
   display: block;
 }
 
 /* Hero / thumbnail image */
-.glitchThumbnail {
+
+.glitchMedia {
   width: 100%;
   margin-top: var(--gap-lg);
+}
+
+.glitchThumbnail {
+  width: 125%;
+  height: auto;       /* Natural intrinsic height*/
+  object-fit: contain;
 }
 
 /* --------------------------------------------------
@@ -162,7 +169,13 @@ img {
     max-width: 60ch; /* slightly looser for mobile readability */
   }
 
+  .glitchMedia {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+  }
+
   .glitchThumbnail {
-    margin: var(--gap-md) 0;
+    height: 100%;
+    object-fit: cover; /* controlled crop on mobile */
   }
 }
