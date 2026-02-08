@@ -12,19 +12,42 @@
   --gap-md: 1.5rem;
 }
 
-* {
+/* --------------------------------------------------
+   RESET & BASE
+-------------------------------------------------- */
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   background: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-body);
+  overflow-x: hidden; /* Prevent mobile horizontal overflow */
 }
 
-/* Navigation */
+/* --------------------------------------------------
+   GLOBAL CONTENT CONTAINER
+-------------------------------------------------- */
+
+/* Wrap your <slot /> in <main class="page"> */
+.page {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* --------------------------------------------------
+   NAVIGATION
+-------------------------------------------------- */
+
 nav {
   position: absolute;
   top: 2rem;
@@ -41,10 +64,17 @@ nav a {
   color: var(--color-text);
 }
 
-/* Typography */
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* --------------------------------------------------
+   TYPOGRAPHY
+-------------------------------------------------- */
+
 h1 {
   font-family: var(--font-heading);
-  font-size: clamp(3.5rem, 7vw, 6rem);
+  font-size: clamp(3rem, 7vw, 6rem); /* softened for mobile */
   font-weight: 800;
   line-height: 0.95;
   margin: 0;
@@ -52,7 +82,7 @@ h1 {
 
 h2 {
   font-family: var(--font-heading);
-  font-size: 1.5rem;
+  font-size: clamp(1.25rem, 4vw, 1.5rem);
   margin-top: var(--gap-lg);
 }
 
@@ -62,23 +92,47 @@ p {
   color: var(--color-muted);
 }
 
-/* Layout */
+/* --------------------------------------------------
+   IMAGES (ASTRO <Image /> SAFE)
+-------------------------------------------------- */
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Hero / thumbnail image */
+.glitchThumbnail {
+  width: 100%;
+  margin-top: var(--gap-lg);
+}
+
+/* --------------------------------------------------
+   LAYOUT
+-------------------------------------------------- */
+
 .split {
   display: grid;
   grid-template-columns: 1fr 1fr;
   min-height: 100vh;
 }
 
+/* Left column */
 .split > .left {
   padding: var(--gap-xl);
   border-right: 1px solid var(--color-line);
 }
 
+/* Right column */
 .split > .right {
   padding: var(--gap-xl);
 }
 
-/* Mobile fallback */
+/* --------------------------------------------------
+   MOBILE FALLBACK
+-------------------------------------------------- */
+
 @media (max-width: 900px) {
   .split {
     grid-template-columns: 1fr;
@@ -89,7 +143,26 @@ p {
     border-bottom: 1px solid var(--color-line);
   }
 
+  .split > .left,
+  .split > .right {
+    padding: var(--gap-lg);
+  }
+
   nav {
-    right: 1.5rem;
+    position: static; /* avoid awkward absolute nav on small screens */
+    justify-content: center;
+    margin: var(--gap-lg) 0;
+  }
+
+  h1 {
+    line-height: 1.05;
+  }
+
+  p {
+    max-width: 60ch; /* slightly looser for mobile readability */
+  }
+
+  .glitchThumbnail {
+    margin: var(--gap-md) 0;
   }
 }
