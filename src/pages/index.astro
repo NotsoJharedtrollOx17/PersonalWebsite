@@ -8,6 +8,7 @@ import { Image } from "astro:assets";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import LocalNavLink from "@components/LocalNavLink.astro";
 import ContactInformation from "@components/ContactInformation.astro";
+import FacialPortrait from "@images/facialPortrait.jpg";
 import GlitchInTheSystem from "@images/glitchInTheSystem.png";
 ---
 
@@ -25,12 +26,19 @@ import GlitchInTheSystem from "@images/glitchInTheSystem.png";
         Open Innovation Engineer developing AI-focused PoCs for decision-makers and 
         independently researching decision-making strategies for the AI age.
       </p>
+      <div class="facialThumbnail">
+        <Image 
+          src={FacialPortrait}
+          alt="My Portrait at Starfield Suwon Plaza where I'm posing at three quarters." 
+        />
+      </div>
     </div>
 
     <div class="right">
-      <div class="glitchMedia">
-        <Image class="glitchThumbnail" src={GlitchInTheSystem} 
-          alt="Thumbnail with blue and green distortions." />
+      <div class="glitchThumbnail">
+        <Image src={GlitchInTheSystem} 
+          alt="Thumbnail with blue and green distortions." 
+        />
       </div>
     </div>
   </section>

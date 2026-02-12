@@ -96,23 +96,34 @@ p {
    IMAGES (ASTRO <Image /> SAFE)
 -------------------------------------------------- */
 
-img {
-  max-width: 125%;
+.facialThumbnail,
+.glitchThumbnail {
+  width: 100%;
+  overflow: hidden;
+}
+
+.facialThumbnail img,
+.glitchThumbnail img {
+  width: 100%;
   height: auto;
   display: block;
+  object-fit: cover;
 }
 
-/* Hero / thumbnail image */
-
-.glitchMedia {
-  width: 100%;
-  margin-top: var(--gap-lg);
+/* Control facialThumbnail proportions */
+.facialThumbnail {
+  max-width: 420px;
 }
 
-.glitchThumbnail {
-  width: 125%;
-  height: auto;       /* Natural intrinsic height*/
-  object-fit: contain;
+.facialThumbnail img {
+  object-position: 60% center;
+}
+
+/* Control glitchThumbnail fill */
+.glitchThumbnail img {
+  height: 100%;
+  min-height: 100%;
+  object-fit: cover;
 }
 
 /* --------------------------------------------------
@@ -161,6 +172,9 @@ img {
 
 /* Right column */
 .split > .right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: var(--gap-xl);
 }
 
@@ -197,17 +211,15 @@ img {
     max-width: 60ch; /* slightly looser for mobile readability */
   }
 
-  .glitchMedia {
-    aspect-ratio: 16 / 9;
-    overflow: hidden;
+  .photoThumbnail {
+    max-width: 100%;
   }
 
-  .glitchThumbnail {
-    height: 100%;
-    object-fit: cover; /* controlled crop on mobile */
+  .glitchThumbnail img {
+    height: auto;
   }
 
-    .contact-links {
+  .contact-links {
     justify-content: center;
     margin-top: var(--gap-lg);
   }
