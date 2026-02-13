@@ -4,6 +4,7 @@
  */
 import { getEntry, render } from "astro:content";
 import BaseLayout from "@layouts/BaseLayout.astro";
+import ColorThemeToogle from "@components/ColorThemeToogle.astro";
 import LocalNavLink from "@components/LocalNavLink.astro";
 
 // [1] Load .src/content/pages/cv.md into page
@@ -19,6 +20,7 @@ const { Content } = await render(cvEntry);
 <BaseLayout pageTitle="Curriculum Vitae">
   <nav>
     <LocalNavLink navPage="">Home</LocalNavLink>
+    <ColorThemeToogle />
   </nav>
 
   <section class="split">
