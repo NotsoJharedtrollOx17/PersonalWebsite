@@ -127,10 +127,11 @@ p {
 }
 
 /* --------------------------------------------------
-   ContactInformation
+   ContactInformation & MainProfessionalAttributes
 -------------------------------------------------- */
 
-.contactInformation {
+.contactInformation,
+.professionalAttributes {
   margin-top: var(--gap-md);
   font-size: 0.85rem;
   letter-spacing: 0.12em;
@@ -151,6 +152,14 @@ p {
 }
 
 .contactInformation span {
+  color: var(--color-muted);
+}
+
+.professionalAttributes p {
+  color: var(--color-text);
+}
+
+.professionalAttributes span {
   color: var(--color-muted);
 }
 
