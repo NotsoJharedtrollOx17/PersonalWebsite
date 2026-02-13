@@ -13,12 +13,13 @@ const { pageTitle } = Astro.props;
   <head>
     <!-- * Prehydration script to load color theme BEFORE everything -->
     <script is:inline>
+      // IIFE: Execute this block of logic once, right now
       (function() {
         const storedTheme = localStorage.getItem('theme');
         if (storedTheme === 'dark') {
           document.documentElement.classList.add('dark');
         }
-      });
+      })();
     </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
