@@ -2,24 +2,35 @@
 ---
 
 <button id="theme-toggle" class="themeToggle">
-    Light or Dark
+    <span id="theme-label"></span>
 </button>
 <script is:inline>
     const root = document.documentElement;
-    const toogle = document.getElementById("theme-toggle");
+    const toggleButton = document.getElementById("theme-toggle");
+    const toggleLabel = document.getElementById("theme-label");
 
-    // [1] Apply stored theme immediately
-    if (localStorage.getItem('theme') === 'dark') {
-        root.classList.add('dark');
+    function updateToggleLabel() {
+        const isDark = root.classList.contains('dark');
+        toggleLabel.textContent = isDark ? 'Light' : 'Dark';
     }
 
+    function saveCurrentTheme() {
+        const isDark = root.classList.contains('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    }
+
+    // [1] update the label from the toggle button component
+    updateToggleLabel();
+
     // [2] Setup component behaviour after being clicked
-    toogle.addEventListener('click', () => {
+    toggleButton.addEventListener('click', () => {
         // [2i] changes color theme
         root.classList.toggle('dark');
 
         // [2ii] saves the theme into localStorage
-        const isDark = root.classList.contains('dark');
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        saveCurrentTheme();
+
+        // [2iii] updates the button label
+        updateToggleLabel();
     }); 
 </script>
