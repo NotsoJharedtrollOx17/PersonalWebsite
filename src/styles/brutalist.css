@@ -13,6 +13,17 @@
 }
 
 /* --------------------------------------------------
+   'DARK MODE' STYLINGS
+-------------------------------------------------- */
+
+.dark {
+  --color-bg: #0e0e0e;
+  --color-text: #f2f2f2;
+  --color-muted: #ececec;
+  --color-line: #f2f2f2; /* softened for better contrast */
+}
+
+/* --------------------------------------------------
    RESET & BASE
 -------------------------------------------------- */
 
@@ -22,6 +33,10 @@
   box-sizing: border-box;
 }
 
+html {
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
 html,
 body {
   margin: 0;
@@ -29,14 +44,22 @@ body {
   background: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-body);
-  overflow-x: hidden; /* Prevent mobile horizontal overflow */
+  overflow-x: hidden;
+}
+
+body,
+nav,
+h1,
+h2,
+p,
+a {
+  transition: color 0.3s ease;
 }
 
 /* --------------------------------------------------
    GLOBAL CONTENT CONTAINER
 -------------------------------------------------- */
 
-/* Wrap your <slot /> in <main class="page"> */
 .page {
   width: 100%;
   max-width: 1480px;
@@ -53,6 +76,7 @@ nav {
   top: 2rem;
   right: 3rem;
   display: flex;
+  align-items: center;
   gap: 2rem;
   font-size: 0.75rem;
   letter-spacing: 0.15em;
@@ -68,13 +92,30 @@ nav a:hover {
   text-decoration: underline;
 }
 
+/* Theme Toggle Button */
+
+.themeToggle {
+  background: none;
+  border: none;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  color: var(--color-text);
+  cursor: pointer;
+  padding: 0;
+}
+
+.themeToggle:hover {
+  opacity: 0.7;
+}
+
 /* --------------------------------------------------
    TYPOGRAPHY
 -------------------------------------------------- */
 
 h1 {
   font-family: var(--font-heading);
-  font-size: clamp(3rem, 7vw, 6rem); /* softened for mobile */
+  font-size: clamp(3rem, 7vw, 6rem);
   font-weight: 800;
   line-height: 1;
   margin: 0;
@@ -96,7 +137,6 @@ p {
    IMAGES (ASTRO <Image /> SAFE)
 -------------------------------------------------- */
 
-/* Control facialThumbnail proportions */
 .facialThumbnail {
   width: 100%;
   height: auto;
@@ -113,7 +153,6 @@ p {
   object-position: 60% center;
 }
 
-/* Control glitchThumbnail fill */
 .glitchThumbnail {
   width: 100%;
   max-width: 100%;
@@ -124,10 +163,11 @@ p {
 .glitchThumbnail img {
   width: 100%;
   height: 50vh;
+  object-fit: contain; /* prevents side cropping */
 }
 
 /* --------------------------------------------------
-   ContactInformation & MainProfessionalAttributes
+   CONTACT INFORMATION & ATTRIBUTES
 -------------------------------------------------- */
 
 .contactInformation,
@@ -173,13 +213,11 @@ p {
   min-height: 100vh;
 }
 
-/* Left column */
 .split > .left {
   padding: var(--gap-xl);
   border-right: 1px solid var(--color-line);
 }
 
-/* Right column */
 .split > .right {
   padding: var(--gap-xl);
   display: flex;
@@ -207,7 +245,7 @@ p {
   }
 
   nav {
-    position: static; /* avoid awkward absolute nav on small screens */
+    position: static;
     justify-content: center;
     margin: var(--gap-lg) 0;
   }
@@ -217,16 +255,17 @@ p {
   }
 
   p {
-    max-width: 60ch; /* slightly looser for mobile readability */
+    max-width: 60ch;
   }
 
   .glitchThumbnail img {
     height: auto;
     max-height: 420px;
   }
+}
 
-  .contact-links {
-    justify-content: center;
-    margin-top: var(--gap-lg);
+@media (prefers-color-scheme: dark) {
+  .facialThumbnail img {
+    filter: brightness(0.9) contrast(1.05);
   }
 }

@@ -1,0 +1,25 @@
+---
+---
+
+<button id="theme-toggle" class="themeToggle">
+    Light or Dark
+</button>
+<script is:inline>
+    const root = document.documentElement;
+    const toogle = document.getElementById("theme-toggle");
+
+    // [1] Apply stored theme immediately
+    if (localStorage.getItem('theme') === 'dark') {
+        root.classList.add('dark');
+    }
+
+    // [2] Setup component behaviour after being clicked
+    toogle.addEventListener('click', () => {
+        // [2i] changes color theme
+        root.classList.toggle('dark');
+
+        // [2ii] saves the theme into localStorage
+        const isDark = root.classList.contains('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    }); 
+</script>
