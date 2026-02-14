@@ -6,6 +6,7 @@
   --color-text: #000000;
   --color-muted: #666666;
   --color-line: #000000;
+  --color-highlight: rgb(255, 102, 0);
 
   --gap-xl: 4rem;
   --gap-lg: 2.5rem;
@@ -90,6 +91,20 @@ nav a {
 
 nav a:hover {
   text-decoration: underline;
+  color: var(--color-highlight);
+}
+
+/* Markdown article formatting */
+
+article a {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+article a:hover {
+  text-decoration: underline;
+  color: var(--color-highlight);
 }
 
 /* Theme Toggle Button */
@@ -189,6 +204,7 @@ p {
 
 .contactInformation a:hover {
   text-decoration: underline;
+  color: var(--color-highlight);
 }
 
 .contactInformation span {
