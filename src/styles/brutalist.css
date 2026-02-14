@@ -177,8 +177,8 @@ p {
 
 .glitchThumbnail img {
   width: 100%;
-  height: 50vh;
-  object-fit: contain; /* prevents side cropping */
+  height: 60vh;
+  object-fit: cover; /* prevents side cropping */
 }
 
 /* --------------------------------------------------
@@ -186,22 +186,25 @@ p {
 -------------------------------------------------- */
 
 .slidingTicker {
-  width: 80%;
+  width: 100%;
+  max-width: 420px;
   overflow: hidden;
   border-top: 1px solid var(--color-line);
   border-bottom: 1px solid var(--color-line);
   padding: 0.75rem 0;
+  margin-top: var(--gap-lg);
+  align-self: center;
 }
 
 .tickerTrack {
   display: flex;
   width: max-content;
-  animation: ticker-scroll 18s linear infinite;
+  animation: ticker-scroll 16s linear infinite;
 }
 
 .tickerTrack span {
   white-space: nowrap;
-  padding-right: 3rem;
+  padding-right: 0.5rem; /* affects the space between spans*/
   font-size: 0.85rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -272,13 +275,19 @@ p {
 
 .split > .right {
   padding: var(--gap-xl);
-  display: flex;
-  align-items: flex-start;
+  display: block;
   justify-content: center;
 }
 
+.rightStack {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 /* --------------------------------------------------
-   MOBILE FALLBACK
+  MOBILE FALLBACK
 -------------------------------------------------- */
 
 @media (max-width: 900px) {
@@ -302,17 +311,23 @@ p {
     margin: var(--gap-lg) 0;
   }
 
-  h1 {
-    line-height: 1.05;
-  }
-
   p {
     max-width: 60ch;
+  }
+
+  .glitchThumbnail {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
   }
 
   .glitchThumbnail img {
     height: auto;
     max-height: 420px;
+  }
+
+  .slidingTicker {
+    max-width: 240px;
   }
 }
 
