@@ -15,21 +15,23 @@ const { pageTitle } = Astro.props;
     <script is:inline>
       // IIFE: Execute this block of logic once, right now
       (function() {
+        // [1] Check if the user is on a mobile browser
         const root = document.documentElement;
+        if (navigator.userAgentData && navigator.userAgentData.mobile) {
+          root.classList.add('dark');
+          return;
+        }
+        
+        // [2] If not, load the stored theme for the website
         const storedTheme = localStorage.getItem('theme');
+        // ... and check if its 'dark'
         if (storedTheme === 'dark') {
           root.classList.add('dark');
           return;
         }
+        // ... or 'light'
         if (storedTheme === 'light') {
-          //root.classList.add('dark');
           return;
-        }
-
-        const isMobile = window.matchMedia('(pointer: coarse)').matches;
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (isMobile || prefersDark) {
-          root.classList.add('dark');
         }
       })();
     </script>
