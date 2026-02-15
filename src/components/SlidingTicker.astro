@@ -1,9 +1,12 @@
 ---
+const { slidingText, time } = Astro.props;
 ---
 
 <div class="slidingTicker">
-    <div class="tickerTrack">
-        <span>GO FURTHER GO FURTHER GO FURTHER GO FURTHER</span>
-        <span>GO FURTHER GO FURTHER GO FURTHER GO FURTHER</span>
+    <div class="tickerTrack" 
+        style=`animation: ticker-scroll ${time}s linear infinite;`
+        >
+        <span>{slidingText}</span>
+        <span>{slidingText}</span>
     </div>
 </div>
