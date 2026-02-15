@@ -7,7 +7,7 @@
   --color-muted: #666666;
   --color-line: #000000;
   --color-highlight: rgb(255, 102, 0);
-
+  --color-external-link: rgb(4, 0, 255);
   --gap-xl: 4rem;
   --gap-lg: 2.5rem;
   --gap-md: 1.5rem;
@@ -22,6 +22,7 @@
   --color-text: #f2f2f2;
   --color-muted: #ececec;
   --color-line: #f2f2f2; /* softened for better contrast */
+  --color-external-link: rgb(17, 93, 245);
 }
 
 /* --------------------------------------------------
@@ -86,6 +87,7 @@ nav {
 
 nav a {
   text-decoration: none;
+  font-weight: bold;
   color: var(--color-text);
 }
 
@@ -99,7 +101,7 @@ nav a:hover {
 article a {
   text-decoration: none;
   text-transform: uppercase;
-  color: var(--color-muted);
+  color: var(--color-external-link);
 }
 
 article a:hover {
@@ -118,6 +120,10 @@ article a:hover {
   color: var(--color-text);
   cursor: pointer;
   padding: 0;
+}
+
+.themeToggle span {
+  font-style: italic;
 }
 
 .themeToggle:hover {
@@ -145,7 +151,7 @@ h2 {
 p {
   max-width: 50ch;
   line-height: 1.5;
-  color: var(--color-muted);
+  color: var(--color-text);
 }
 
 /* --------------------------------------------------
@@ -172,6 +178,7 @@ p {
   width: 100%;
   max-width: 100%;
   overflow: hidden;
+  /*aspect-ratio: 16 / 9;*/
   margin: 0 auto;
 }
 
@@ -241,7 +248,8 @@ p {
 
 .contactInformation a {
   text-decoration: none;
-  color: var(--color-text);
+  font-weight: bold;
+  color: var(--color-external-link);
 }
 
 .contactInformation a:hover {
@@ -296,6 +304,7 @@ p {
 @media (max-width: 900px) {
   .split {
     grid-template-columns: 1fr;
+    min-height: auto;
   }
 
   .split > .left {
@@ -316,21 +325,18 @@ p {
 
   p {
     max-width: 60ch;
-  }
-
-  .facialThumbnail {
-    margin-bottom: 0;
+    font-size: 14px;
   }
 
   .glitchThumbnail {
     width: 100%;
-    height: 60px;
+    /*height: 40%;*/
     overflow: hidden;
   }
 
   .glitchThumbnail img {
-    height: auto;
-    max-height: 120px;
+    height: 100px;
+    /*max-height: 40%;*/
   }
 
   .slidingTicker {
