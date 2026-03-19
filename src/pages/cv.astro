@@ -31,12 +31,12 @@ const { Content } = await render(cvEntry);
       </div>
       {cvEntry.data.cvPdfUrl && (
         <p class="cv-link">
-          <a 
-            href={cvEntry.data.cvPdfUrl} 
+          <span class="cv-link-icon">📄</span>
+          <a             href={cvEntry.data.cvPdfUrl} 
             target="_blank"
             rel="noopener noreferrer"
           >
-            ↓ View Full CV (PDF)
+            View Full CV (PDF)
           </a>
         </p>
       )}

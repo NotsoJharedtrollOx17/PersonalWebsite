@@ -30,25 +30,27 @@
   font-family: var(--font-heading);
   font-weight: 600;
   font-size: 1.125rem;
-  /* REMOVED text-align: center; */
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Space between icon and text */
 }
 
 .cv-link a {
   color: var(--color-text);
   text-decoration: none;
-  border-bottom: 1px solid var(--color-line);
   display: inline-block;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
 }
 
 .cv-link a:hover {
-  border-color: var(--color-highlight);
   color: var(--color-highlight);
+  text-decoration: underline;
+  text-decoration-color: var(--color-highlight);
 }
 
-/* Optional: Add document icon */
-.cv-link a::before {
-  content: "📄";
-  margin-right: 0.5em;
+/* Optional: Style the icon */
+.cv-link-icon {
+  font-size: 1.2em; /* Slightly larger than text */
   opacity: 0.8;
 }
 
@@ -215,8 +217,7 @@ p {
 }
 
 /* --------------------------------------------------
-  MARK: HORIZONTAL SLIDING TICKER
--------------------------------------------------- */
+  MARK: HORIZONTAL SLIDING TICKER-------------------------------------------------- */
 
 .slidingTicker {
   width: 100%;
