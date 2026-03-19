@@ -7,7 +7,7 @@ import { defineCollection, z } from "astro:content";
 const pages = defineCollection({
   schema: z.object({
     title: z.string(),
-    cvPdfUrl: z.string().url().optional()
+    cvFileLink: z.string().url().optional()
   })
 });
 

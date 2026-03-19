@@ -40,6 +40,7 @@
   text-decoration: none;
   display: inline-block;
   transition: color 0.2s ease, text-decoration-color 0.2s ease;
+  cursor: pointer; /* Added explicit pointer cursor */
 }
 
 .cv-link a:hover {

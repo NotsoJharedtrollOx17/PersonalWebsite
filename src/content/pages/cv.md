@@ -1,6 +1,6 @@
 ---
 title: "CV"
-cvPdfUrl: "https://drive.google.com/file/d/1fmCSXzfoUmTtYZO0XXN6P78IiJhnS00U/view?usp=drive_link"
+cvFileUrl: "https://drive.google.com/file/d/1fmCSXzfoUmTtYZO0XXN6P78IiJhnS00U/view?usp=drive_link"
 ---
 
 ## Experience
