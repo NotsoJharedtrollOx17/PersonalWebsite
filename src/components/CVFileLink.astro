@@ -1,0 +1,19 @@
+---
+/**
+ * Component for displaying a CV file link with document icon
+ * Follows brutalist design principles and matches site link behavior * 
+ * Props:
+ * - cvFileUrl: URL to the CV PDF file (optional)
+ */
+const { cvFileUrl } = Astro.props;
+
+// Validate URL if provided
+//const isUrlValid = cvFileUrl && cvFileUrl.trim() !== '';
+---
+
+<p class="cv-link">
+    <span class="cv-link-icon">📄</span>
+    <a href={cvFileUrl} target="_blank" rel="noopener">
+      View Full CV (PDF)
+    </a>
+</p>
