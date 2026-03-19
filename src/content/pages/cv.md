@@ -1,12 +1,12 @@
 ---
 title: "CV"
+cvPdfUrl: "https://drive.google.com/file/d/1fmCSXzfoUmTtYZO0XXN6P78IiJhnS00U/view?usp=drive_link"
 ---
 
 ## Experience
 
 **Open Innovation Engineer**  
-App Development & Ecosystem — Samsung Research Tijuana  
-*Feb 2024 – Present*
+App Development & Ecosystem — Samsung Research Tijuana  *Feb 2024 – Present*
 
 • Developed 10+ AI-focused proof-of-concepts featuring emerging technologies including AI Agents, Speech-To-Text systems, Virtual Assistants, and Large Language Models.
 

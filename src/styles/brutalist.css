@@ -14,8 +14,7 @@
 }
 
 /* --------------------------------------------------
-  MARK: 'DARK MODE' STYLINGS
--------------------------------------------------- */
+  MARK: 'DARK MODE' STYLINGS-------------------------------------------------- */
 
 .dark {
   --color-bg: #0e0e0e;
@@ -23,6 +22,34 @@
   --color-muted: #ececec;
   --color-line: #f2f2f2; /* softened for better contrast */
   --color-external-link: rgb(17, 93, 245);
+}
+
+/* PDF CV Link - Brutalist styling */
+.cv-link {
+  margin: 1.5rem 0;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.125rem;
+  /* REMOVED text-align: center; */
+}
+
+.cv-link a {
+  color: var(--color-text);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-line);
+  display: inline-block;
+}
+
+.cv-link a:hover {
+  border-color: var(--color-highlight);
+  color: var(--color-highlight);
+}
+
+/* Optional: Add document icon */
+.cv-link a::before {
+  content: "📄";
+  margin-right: 0.5em;
+  opacity: 0.8;
 }
 
 /* --------------------------------------------------
@@ -131,8 +158,7 @@ article a:hover {
 }
 
 /* --------------------------------------------------
-  MARK: TYPOGRAPHY
--------------------------------------------------- */
+  MARK: TYPOGRAPHY-------------------------------------------------- */
 
 h1 {
   font-family: var(--font-heading);
@@ -231,8 +257,7 @@ p {
 }
 
 /* --------------------------------------------------
-  MARK: CONTACT INFORMATION & ATTRIBUTES
--------------------------------------------------- */
+  MARK: CONTACT INFORMATION & ATTRIBUTES-------------------------------------------------- */
 
 .contactInformation,
 .professionalAttributes {
@@ -298,7 +323,7 @@ p {
 }
 
 /* --------------------------------------------------
- MARK: MOBILE FALLBACK
+  MARK: MOBILE FALLBACK
 -------------------------------------------------- */
 
 @media (max-width: 900px) {

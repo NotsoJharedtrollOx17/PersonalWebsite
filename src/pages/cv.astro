@@ -17,7 +17,6 @@ if (!cvEntry) {
 // [2] Render the Markdown body to HTML as 'Content' Component
 const { Content } = await render(cvEntry);
 ---
-
 <BaseLayout pageTitle="Curriculum Vitae">
   <nav>
     <LocalNavLink navPage="">Home</LocalNavLink>
@@ -30,8 +29,18 @@ const { Content } = await render(cvEntry);
       <div class="professionalAttributes">
         <p>Open Innovation Engineer</p>
       </div>
-      <SlidingTicker 
-        slidingText="Data Science Machine Learning Technical Documentation AI INtegration PoC Development Astro JS C/C++ SQL Python PyTorch Tensorflow Scikit-Learn Linux Public Speaking Partner Relationships Management Decision-Making Adaptability Bilingual (English & Spanish)"
+      {cvEntry.data.cvPdfUrl && (
+        <p class="cv-link">
+          <a 
+            href={cvEntry.data.cvPdfUrl} 
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            ↓ View Full CV (PDF)
+          </a>
+        </p>
+      )}
+      <SlidingTicker         slidingText="Data Science Machine Learning Technical Documentation AI INtegration PoC Development Astro JS C/C++ SQL Python PyTorch Tensorflow Scikit-Learn Linux Public Speaking Partner Relationships Management Decision-Making Adaptability Bilingual (English & Spanish)"
         time="40"
       />
     </div>
