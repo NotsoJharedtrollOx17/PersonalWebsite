@@ -1,0 +1,72 @@
+---
+import { getEntry, getCollection, type CollectionEntry } from 'astro:content';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import LocalNavLink from '@components/LocalNavLink.astro';
+
+// Get all blog post slugs for static paths
+export async function getStaticPaths() {
+  const blogPosts = await getCollection('blog', ({ data }) => !data.draft);
+  // Filter out any posts that might not have an id (shouldn't happen, but safe)
+  const validPosts = blogPosts.filter(post => post.id !== undefined && post.id !== null);
+  return validPosts.map(post => ({
+    params: { slug: post.id },
+    props: { post }
+  }));
+}
+
+// Get the blog post entry
+const { slug } = Astro.params;
+const entry = await getEntry('blog', slug);
+
+// If post doesn't exist or is draft, return 404
+if (!entry || entry.data.draft) {
+  return redirect(404);
+}
+
+// Get all posts for related posts section (optional)
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const relatedPosts = allPosts
+  .filter(post => post.id !== entry.id)
+  .slice(0, 3); // Get up to 3 related posts
+---
+<BaseLayout   title={`${entry.data.title} — Abraham Flores`}
+  description={entry.data.description}
+>
+  <nav class="blogNav">
+    <LocalNavLink navPage="">Home</LocalNavLink>
+    <LocalNavLink navPage="cv">CV</LocalNavLink>
+  </nav>
+  <article class="blogPost">
+    <h1>{entry.data.title}</h1>
+        <div class="blogMeta">
+      <time datetime={entry.data.pubDate.toISOString()}>
+        {entry.data.pubDate.toLocaleDateString(undefined, {
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric'
+        })}
+      </time>
+            {/* Tags display */}
+      {entry.data.tags.map((tag: string) => (
+        <span class="blogTag">#{tag}</span>
+      ))}
+    </div>
+        {/* Content - using the standard Astro way to render content */}
+    <div class="blogContent" set:html={entry.body} />
+        {/* Related Posts (optional) */}
+    {relatedPosts.length > 0 && (
+      <section class="relatedPosts">
+        <h2>Related Posts</h2>
+        <ul>
+          {relatedPosts.map((relatedPost) => (
+            <li>
+              <a href={`/blog/${relatedPost.id}`}>
+                {relatedPost.data.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+  </article>
+</BaseLayout>

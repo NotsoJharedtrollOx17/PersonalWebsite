@@ -1,8 +1,7 @@
 ---
 /**
  * Page component that is the default landing page (Home) 
- * of the website. THIS IS Astro's STARTING POINT. 
- * DO NOT DELETE!
+ * of the website. THIS IS Astro's STARTING POINT.  * DO NOT DELETE!
  */
 
 import BaseLayout from "@layouts/BaseLayout.astro";
@@ -13,11 +12,11 @@ import SlidingTicker from "@components/SlidingTicker.astro";
 import FacialThumbnail from "@components/FacialThumbnail.astro";
 import GlitchThumbnail from "@components/GlitchThumbnail.astro";
 ---
-
 <BaseLayout pageTitle="Abraham Flores">
   <nav>
     <LocalNavLink navPage="">Home</LocalNavLink>
     <LocalNavLink navPage="cv">CV</LocalNavLink>
+    <LocalNavLink navPage="blog">Blog</LocalNavLink>
     <ColorThemeToogle />
   </nav>
 
