@@ -52,7 +52,7 @@ const relatedPosts = allPosts
       ))}
     </div>
         {/* Content - using the standard Astro way to render content */}
-    <div class="blogContent" set:html={entry.body} />
+    <div class="blogContent" set:html={entry.rendered!.html} />
         {/* Related Posts (optional) */}
     {relatedPosts.length > 0 && (
       <section class="relatedPosts">
