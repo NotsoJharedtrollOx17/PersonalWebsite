@@ -1,6 +1,8 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '@layouts/BaseLayout.astro';
+import LocalNavLink from "@components/LocalNavLink.astro";
+import ColorThemeToogle from "@components/ColorThemeToogle.astro";
 
 const blogPosts = await getCollection('blog', ({ data }) => !data.draft);
 // Sort by date descending
@@ -11,6 +13,11 @@ const sortedPosts = blogPosts.sort(
 <BaseLayout   title="Blog — Abraham Flores"
   description="Explore articles on AI, systems engineering, and technical research"
 >
+  <nav class="blogNav">
+    <LocalNavLink navPage="">Home</LocalNavLink>
+    <LocalNavLink navPage="cv">CV</LocalNavLink>
+    <ColorThemeToogle />
+  </nav>
   <section class="blog">
     <div class="prose">
       <h1>Blog</h1>

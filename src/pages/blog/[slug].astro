@@ -2,6 +2,7 @@
 import { getEntry, getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import LocalNavLink from '@components/LocalNavLink.astro';
+import ColorThemeToogle from "@components/ColorThemeToogle.astro";
 
 // Get all blog post slugs for static paths
 export async function getStaticPaths() {
@@ -35,6 +36,8 @@ const relatedPosts = allPosts
   <nav class="blogNav">
     <LocalNavLink navPage="">Home</LocalNavLink>
     <LocalNavLink navPage="cv">CV</LocalNavLink>
+    <LocalNavLink navPage="blog">Blog</LocalNavLink>
+    <ColorThemeToogle />
   </nav>
   <article class="blogPost">
     <div class="blogPostHeader">
