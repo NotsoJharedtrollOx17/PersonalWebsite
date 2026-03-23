@@ -8,7 +8,8 @@ tags: ["AI", "Systems", "Architecture"]
 ## Introduction
 In recent months, I've been investigating the intersection of artificial intelligence and traditional systems engineering to understand how AI agents can enhance decision-making capabilities in complex systems.
 
-## Core ConceptsAI agents represent a paradigm shift in how we approach system design. Rather than rigidly programmed systems, AI agents can perceive their environment, make decisions, and learn from experience to achieve specific goals.
+## Core Concepts
+AI agents represent a paradigm shift in how we approach system design. Rather than rigidly programmed systems, AI agents can perceive their environment, make decisions, and learn from experience to achieve specific goals.
 
 ### Key Characteristics:
 - **Autonomy**: Ability to operate without direct human intervention
