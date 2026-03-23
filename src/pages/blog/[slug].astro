@@ -37,23 +37,26 @@ const relatedPosts = allPosts
     <LocalNavLink navPage="cv">CV</LocalNavLink>
   </nav>
   <article class="blogPost">
-    <h1>{entry.data.title}</h1>
-        <div class="blogMeta">
-      <time datetime={entry.data.pubDate.toISOString()}>
-        {entry.data.pubDate.toLocaleDateString(undefined, {
-          year: 'numeric',
-          month: 'short',
-          day: 'numeric'
-        })}
-      </time>
-            {/* Tags display */}
-      {entry.data.tags.map((tag: string) => (
-        <span class="blogTag">#{tag}</span>
-      ))}
+    <div class="blogPostHeader">
+      <h1>{entry.data.title}</h1>
+      <div class="blogMeta">
+        <time datetime={entry.data.pubDate.toISOString()}>
+          {entry.data.pubDate.toLocaleDateString(undefined, {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric'
+          })}
+        </time>
+        {entry.data.tags.map((tag: string) => (
+          <span class="blogTag">#{tag}</span>
+        ))}
+      </div>
     </div>
-        {/* Content - using the standard Astro way to render content */}
-    <div class="blogContent" set:html={entry.rendered!.html} />
-        {/* Related Posts (optional) */}
+    
+    <div class="prose">
+      <div class="blogContent" set:html={entry.rendered!.html} />
+    </div>
+    
     {relatedPosts.length > 0 && (
       <section class="relatedPosts">
         <h2>Related Posts</h2>

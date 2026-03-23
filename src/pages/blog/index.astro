@@ -8,19 +8,18 @@ const sortedPosts = blogPosts.sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 ---
-<BaseLayout   
-  title="Blog — Abraham Flores"
+<BaseLayout   title="Blog — Abraham Flores"
   description="Explore articles on AI, systems engineering, and technical research"
-> 
+>
   <section class="blog">
-    <h1>Blog</h1>
-    {sortedPosts.map((post) => (
+    <div class="prose">
+      <h1>Blog</h1>
+        {sortedPosts.map((post) => (
       <article class="blogPost">
         <h2>
-        {/* TODO address bad link issue with LocalNavLink */}
-        <a href={`/PersonalWebsite/blog/${post.id}`}>
-          {post.data.title}
-        </a>
+          <a href={`/PersonalWebsite/blog/${post.id}`}>
+            {post.data.title}
+          </a>
         </h2>
         <p class="blogDescription">{post.data.description}</p>
         <div class="blogMeta">
@@ -31,13 +30,14 @@ const sortedPosts = blogPosts.sort(
               day: 'numeric'
             })}
           </time>
-            
+          
           {/* Tags display (for tag-based filtering) */}
           {post.data.tags.map((tag) => (
             <span class="blogTag">#{tag}</span>
           ))}
         </div>
-      </article>  
+      </article>
     ))}
+    </div>
   </section>
 </BaseLayout>
