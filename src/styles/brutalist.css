@@ -97,9 +97,23 @@
   padding-bottom: var(--gap-xl);
 }
 
+/* Blog post header padding to match Home/CV spacing */
+.blogPostHeader {
+  padding: var(--gap-xl);
+}
+
+/* Remove top padding from prose inside blog posts to avoid double padding */
+article.blogPost > .prose {
+  padding-top: 0;
+}
+
+/* Remove top margin from first element in blogContent to reduce gap between header and content */
+article.blogPost .blogContent > :first-child {
+  margin-top: 0;
+}
+
 /* --------------------------------------------------
-  MARK: RESET & BASE
--------------------------------------------------- */
+  MARK: RESET & BASE-------------------------------------------------- */
 
 *,
 *::before,
@@ -131,8 +145,7 @@ a {
 }
 
 /* --------------------------------------------------
-  MARK: GLOBAL CONTENT CONTAINER
--------------------------------------------------- */
+  MARK: GLOBAL CONTENT CONTAINER-------------------------------------------------- */
 
 .page {
   width: 100%;
