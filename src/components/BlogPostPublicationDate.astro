@@ -1,0 +1,20 @@
+---
+const { publicationDate } = Astro.props;
+
+var dateISOFormat: string = "";
+var dateLocaleFormat: string = "";
+
+if (publicationDate) {
+    dateISOFormat = publicationDate.toISOString();
+    dateLocaleFormat = publicationDate.toLocaleDateString(
+        undefined, 
+        {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric'
+        }
+    );
+}
+---
+
+<time datetime={dateISOFormat}>{dateLocaleFormat}</time>

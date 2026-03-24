@@ -5,6 +5,7 @@ import LocalNavLink from "@components/LocalNavLink.astro";
 import ColorThemeToogle from "@components/ColorThemeToogle.astro";
 import BlogPostLink from "@components/BlogPostLink.astro";
 import BlogPostDescription from '@components/BlogPostDescription.astro';
+import BlogPostPublicationDate from '@components/BlogPostPublicationDate.astro';
 import BlogPostTags from '@components/BlogPostTags.astro';
 
 const blogPosts = await getCollection('blog', ({ data }) => !data.draft);
@@ -38,18 +39,7 @@ const sortedPosts = blogPosts.sort(
           />
           {/* TODO refactor into individual component */}
           <div class="blogMeta">
-            <time datetime={post.data.pubDate.toISOString()}>
-              {post.data.pubDate.toLocaleDateString(undefined, {
-                year: 'numeric',
-                month: 'short',
-                day: 'numeric'
-              })}
-            </time>
-            
-            {/* Tags display (for tag-based filtering) */}
-            {/*post.data.tags.map((tag: string) => (
-              <span class="blogTag">#{tag}</span>
-            ))*/}
+            <BlogPostPublicationDate publicationDate={post.data.pubDate}/>
             <BlogPostTags tagList={post.data.tags}/>
           </div>
         </article>
