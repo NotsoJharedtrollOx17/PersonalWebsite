@@ -2,8 +2,9 @@
 import { getEntry, getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import LocalNavLink from '@components/LocalNavLink.astro';
-import ColorThemeToogle from "@components/ColorThemeToogle.astro";
+import ColorThemeToogle from '@components/ColorThemeToogle.astro';
 import BlogPostData from '@components/BlogPostData.astro';
+import BlogPostContent from '@components/BlogPostContent.astro';
 import BlogPostLink from '@components/BlogPostLink.astro';
 
 // Get all blog post slugs for static paths
@@ -42,6 +43,7 @@ const relatedPosts = allPosts
     <LocalNavLink navPage="blog">Blog</LocalNavLink>
     <ColorThemeToogle />
   </nav>
+
   <article class="blogPost">
     {/* TODO refactor into individual component */}
     <div class="blogPostHeader">
@@ -51,13 +53,9 @@ const relatedPosts = allPosts
         tagList={entry.data.tags}
       />
     </div>
+
+    <BlogPostContent postHTML={entry.rendered!.html}/>
     
-    {/* TODO refactor into individual component */}
-    <div class="prose">
-      <div class="blogContent" set:html={entry.rendered!.html} />
-    </div>
-    
-    {/* TODO refactor into individual component */}
     {relatedPosts.length > 0 && (
       <section class="relatedPosts">
         <h2>Related Posts</h2>
