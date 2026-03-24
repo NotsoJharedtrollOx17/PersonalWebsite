@@ -1,0 +1,7 @@
+---
+const { tagList } = Astro.props;
+---
+
+{tagList.map((tag: string) => (
+    <span class="blogTag">#{tag}</span>
+))}

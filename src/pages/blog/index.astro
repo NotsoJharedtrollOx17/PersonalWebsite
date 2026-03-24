@@ -5,6 +5,7 @@ import LocalNavLink from "@components/LocalNavLink.astro";
 import ColorThemeToogle from "@components/ColorThemeToogle.astro";
 import BlogPostLink from "@components/BlogPostLink.astro";
 import BlogPostDescription from '@components/BlogPostDescription.astro';
+import BlogPostTags from '@components/BlogPostTags.astro';
 
 const blogPosts = await getCollection('blog', ({ data }) => !data.draft);
 // Sort by date descending
@@ -46,9 +47,10 @@ const sortedPosts = blogPosts.sort(
             </time>
             
             {/* Tags display (for tag-based filtering) */}
-            {post.data.tags.map((tag: string) => (
+            {/*post.data.tags.map((tag: string) => (
               <span class="blogTag">#{tag}</span>
-            ))}
+            ))*/}
+            <BlogPostTags tagList={post.data.tags}/>
           </div>
         </article>
       ))}
