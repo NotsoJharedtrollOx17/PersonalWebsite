@@ -1,0 +1,11 @@
+---
+import BlogPostPublicationDate from '@components/BlogPostPublicationDate.astro';
+import BlogPostTags from '@components/BlogPostTags.astro';
+
+const { publicationDate, tagList } = Astro.props;
+---
+
+<div class="blogMeta">
+    <BlogPostPublicationDate publicationDate={publicationDate}/>
+    <BlogPostTags tagList={tagList}/>
+</div>
