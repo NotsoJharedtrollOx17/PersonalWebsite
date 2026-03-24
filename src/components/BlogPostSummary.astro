@@ -1,0 +1,29 @@
+---
+import BlogPostLink from "@components/BlogPostLink.astro";
+import BlogPostDescription from '@components/BlogPostDescription.astro';
+import BlogPostData from '@components/BlogPostData.astro';
+
+const {
+    postId, 
+    postTitle, 
+    postDescription, 
+    publicationDate, 
+    tagList
+} = Astro.props;
+---
+
+<article class="blogPost">
+    <h2>
+        <BlogPostLink 
+            postId={postId} 
+            postTitle={postTitle} 
+        />
+    </h2>
+    <BlogPostDescription 
+        postDescription={postDescription}
+    />
+    <BlogPostData 
+        publicationDate={publicationDate}
+        tagList={tagList}
+    />
+</article>

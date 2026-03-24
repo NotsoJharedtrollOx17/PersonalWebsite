@@ -3,9 +3,7 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import LocalNavLink from "@components/LocalNavLink.astro";
 import ColorThemeToogle from "@components/ColorThemeToogle.astro";
-import BlogPostLink from "@components/BlogPostLink.astro";
-import BlogPostDescription from '@components/BlogPostDescription.astro';
-import BlogPostData from '@components/BlogPostData.astro';
+import BlogPostSummary from "@components/BlogPostSummary.astro";
 
 const blogPosts = await getCollection('blog', ({ data }) => !data.draft);
 // Sort by date descending
@@ -26,21 +24,13 @@ const sortedPosts = blogPosts.sort(
     <div class="prose">
       <h1>Blog</h1>
       {sortedPosts.map((post) => (
-        <article class="blogPost">
-          <h2>
-            <BlogPostLink 
-              postId={post.id} 
-              postTitle={post.data.title} 
-            />
-          </h2>
-          <BlogPostDescription 
-            postDescription={post.data.description}
-          />
-          <BlogPostData 
-            publicationDate={post.data.pubDate}
-            tagList={post.data.tags}
-          />
-        </article>
+        <BlogPostSummary
+          postId={post.id}
+          postTitle={post.data.title}
+          postDescription={post.data.description}
+          publicationDate={post.data.pubDate}
+          tagList={post.data.tags}
+        />
       ))}
     </div>
   </section>
