@@ -3,6 +3,8 @@ import { getEntry, getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import LocalNavLink from '@components/LocalNavLink.astro';
 import ColorThemeToogle from "@components/ColorThemeToogle.astro";
+import BlogPostData from '@components/BlogPostData.astro';
+import BlogPostLink from '@components/BlogPostLink.astro';
 
 // Get all blog post slugs for static paths
 export async function getStaticPaths() {
@@ -30,7 +32,8 @@ const relatedPosts = allPosts
   .filter(post => post.id !== entry.id)
   .slice(0, 3); // Get up to 3 related posts
 ---
-<BaseLayout   title={`${entry.data.title} — Abraham Flores`}
+<BaseLayout   
+  title={`${entry.data.title} — Abraham Flores`}
   description={entry.data.description}
 >
   <nav class="blogNav">
@@ -40,35 +43,31 @@ const relatedPosts = allPosts
     <ColorThemeToogle />
   </nav>
   <article class="blogPost">
+    {/* TODO refactor into individual component */}
     <div class="blogPostHeader">
       <h1>{entry.data.title}</h1>
-      <div class="blogMeta">
-        <time datetime={entry.data.pubDate.toISOString()}>
-          {entry.data.pubDate.toLocaleDateString(undefined, {
-            year: 'numeric',
-            month: 'short',
-            day: 'numeric'
-          })}
-        </time>
-        {entry.data.tags.map((tag: string) => (
-          <span class="blogTag">#{tag}</span>
-        ))}
-      </div>
+      <BlogPostData
+        publicationDate={entry.data.pubDate}
+        tagList={entry.data.tags}
+      />
     </div>
     
+    {/* TODO refactor into individual component */}
     <div class="prose">
       <div class="blogContent" set:html={entry.rendered!.html} />
     </div>
     
+    {/* TODO refactor into individual component */}
     {relatedPosts.length > 0 && (
       <section class="relatedPosts">
         <h2>Related Posts</h2>
         <ul>
           {relatedPosts.map((relatedPost) => (
             <li>
-              <a href={`/blog/${relatedPost.id}`}>
-                {relatedPost.data.title}
-              </a>
+              <BlogPostLink 
+                postId={relatedPost.id} 
+                postTitle={relatedPost.data.title}
+              />
             </li>
           ))}
         </ul>
