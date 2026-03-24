@@ -3,6 +3,7 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import LocalNavLink from "@components/LocalNavLink.astro";
 import ColorThemeToogle from "@components/ColorThemeToogle.astro";
+import BlogPostLink from "@components/BlogPostLink.astro";
 
 const blogPosts = await getCollection('blog', ({ data }) => !data.draft);
 // Sort by date descending
@@ -10,7 +11,8 @@ const sortedPosts = blogPosts.sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 ---
-<BaseLayout   title="Blog — Abraham Flores"
+<BaseLayout   
+  title="Blog — Abraham Flores"
   description="Explore articles on AI, systems engineering, and technical research"
 >
   <nav class="blogNav">
@@ -21,30 +23,33 @@ const sortedPosts = blogPosts.sort(
   <section class="blog">
     <div class="prose">
       <h1>Blog</h1>
-        {sortedPosts.map((post) => (
-      <article class="blogPost">
-        <h2>
-          <a href={`/PersonalWebsite/blog/${post.id}`}>
-            {post.data.title}
-          </a>
-        </h2>
-        <p class="blogDescription">{post.data.description}</p>
-        <div class="blogMeta">
-          <time datetime={post.data.pubDate.toISOString()}>
-            {post.data.pubDate.toLocaleDateString(undefined, {
-              year: 'numeric',
-              month: 'short',
-              day: 'numeric'
-            })}
-          </time>
-          
-          {/* Tags display (for tag-based filtering) */}
-          {post.data.tags.map((tag) => (
-            <span class="blogTag">#{tag}</span>
-          ))}
-        </div>
-      </article>
-    ))}
+      {sortedPosts.map((post) => (
+        <article class="blogPost">
+          <h2>
+            <BlogPostLink 
+              postId={post.id} 
+              postTitle={post.data.title} 
+            />
+          </h2>
+          {/* TODO refactor into individual component */}
+          <p class="blogDescription">{post.data.description}</p>
+          {/* TODO refactor into individual component */}
+          <div class="blogMeta">
+            <time datetime={post.data.pubDate.toISOString()}>
+              {post.data.pubDate.toLocaleDateString(undefined, {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
+              })}
+            </time>
+            
+            {/* Tags display (for tag-based filtering) */}
+            {post.data.tags.map((tag: string) => (
+              <span class="blogTag">#{tag}</span>
+            ))}
+          </div>
+        </article>
+      ))}
     </div>
   </section>
 </BaseLayout>

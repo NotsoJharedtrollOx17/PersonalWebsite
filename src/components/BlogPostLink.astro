@@ -1,0 +1,7 @@
+---
+const { postId, postTitle } = Astro.props;
+---
+
+<a href={`${import.meta.env.BASE_URL}/blog/${postId}`}>
+    {postTitle}
+</a>
