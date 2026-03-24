@@ -4,6 +4,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import LocalNavLink from "@components/LocalNavLink.astro";
 import ColorThemeToogle from "@components/ColorThemeToogle.astro";
 import BlogPostLink from "@components/BlogPostLink.astro";
+import BlogPostDescription from '@components/BlogPostDescription.astro';
 
 const blogPosts = await getCollection('blog', ({ data }) => !data.draft);
 // Sort by date descending
@@ -31,8 +32,9 @@ const sortedPosts = blogPosts.sort(
               postTitle={post.data.title} 
             />
           </h2>
-          {/* TODO refactor into individual component */}
-          <p class="blogDescription">{post.data.description}</p>
+          <BlogPostDescription 
+            postDescription={post.data.description}
+          />
           {/* TODO refactor into individual component */}
           <div class="blogMeta">
             <time datetime={post.data.pubDate.toISOString()}>
