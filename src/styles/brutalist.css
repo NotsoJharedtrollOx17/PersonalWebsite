@@ -71,8 +71,9 @@
 }
 
 .blogTag:hover {
-  background-color: var(--color-line);
+  background-color: var(--color-highlight);
   color: var(--color-bg);
+  border: 0
 }
 
 .blogMeta {
@@ -151,6 +152,7 @@ body,
 nav,
 h1,
 h2,
+li,
 p,
 a {
   transition: color 0.3s ease;
