@@ -1,7 +1,7 @@
 ---
 title: "First Post: Exploring AI Agents in System Design"
 description: "An initial exploration of how AI agents can be integrated into traditional system architectures for enhanced decision-making capabilities."
-pubDate: 2026-03-15
+pubDate: 2026-03-27
 tags: ["AI", "Systems", "Architecture"]
 ---
 
