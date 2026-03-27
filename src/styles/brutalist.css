@@ -79,7 +79,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  margin-top: var(--gap-lg);
+  margin-top: var(--gap-md);
   margin-bottom: var(--gap-lg);
   font-size: 0.85rem;
   color: var(--color-muted);
@@ -99,7 +99,7 @@
 
 /* Blog post header padding to match Home/CV spacing */
 .blogPostHeader {
-  padding: var(--gap-xl);
+  padding: var(--gap-md);
 }
 
 /* Remove top padding from prose inside blog posts to avoid double padding */
@@ -110,6 +110,31 @@ article.blogPost > .prose {
 /* Remove top margin from first element in blogContent to reduce gap between header and content */
 article.blogPost .blogContent > :first-child {
   margin-top: 0;
+}
+
+/* Fix markdown-rendered lists to match paragraph styling */
+.blogContent ul,
+.blogContent ol {
+  font-size: 1rem; /* Match paragraph base size */
+  line-height: 1.5; /* Match paragraph line-height */
+  margin-top: 0;
+  margin-bottom: 1.5rem; /* Match paragraph bottom margin */
+  padding-left: 2rem; /* Proper indentation */
+}
+
+.blogContent li {
+  font-size: 1rem; /* Match paragraph size */
+  line-height: 1.5; /* Match paragraph line-height */
+  margin-bottom: 0.5rem; /* Space between list items */
+}
+
+/* Ensure nested lists maintain proper spacing */
+.blogContent ul ul,
+.blogContent ol ol,
+.blogContent ul ol,
+.blogContent ol ul {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 /* --------------------------------------------------
@@ -351,8 +376,7 @@ p {
 }
 
 /* --------------------------------------------------
-  MARK: LAYOUT
--------------------------------------------------- */
+  MARK: LAYOUT-------------------------------------------------- */
 
 .split {
   display: grid;
@@ -379,8 +403,7 @@ p {
 }
 
 /* --------------------------------------------------
-  MARK: MOBILE FALLBACK
--------------------------------------------------- */
+  MARK: MOBILE FALLBACK-------------------------------------------------- */
 
 @media (max-width: 900px) {
   .split {
@@ -393,10 +416,19 @@ p {
     border-bottom: 1px solid var(--color-line);
   }
 
-  .split > .left,
-  .split > .right {
-    padding: var(--gap-md);
-  }
+    .split > .left,
+    .split > .right {
+      /* Apply blog-like constraint for mobile */
+      max-width: 50ch;
+      margin-left: auto;
+      margin-right: auto;
+            /* Use same vertical padding as blog prose */
+      padding-top: var(--gap-md);
+      padding-bottom: var(--gap-md);
+            /* Reset horizontal padding since we're using margin-auto */
+      padding-left: 0;
+      padding-right: 0;
+    }
 
   nav {
     position: static;
@@ -419,7 +451,7 @@ p {
   }
 
   .slidingTicker {
-    max-width: 240px;
+    max-width: 340px;
     margin-top: var(--gap-md);
   }
 
