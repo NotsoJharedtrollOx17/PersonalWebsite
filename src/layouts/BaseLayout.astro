@@ -5,13 +5,41 @@
 import "@styles/brutalist.css"; // ! ALWAYS IMPORT CSS FILES INTO THE ASTRO FRONTMATTER
 import { SITE_TITLE, SITE_DESCRIPTION } from '@consts';
 
-const { pageTitle, description, ogImage } = Astro.props;
+const { pageTitle, description, ogImage, pubDate, url } = Astro.props;
 // Set default values if not provided
 const title = pageTitle || SITE_TITLE;
 const desc = description || SITE_DESCRIPTION;
 const image = ogImage || '/default-og.png';
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+// BlogPosting schema for SEO (only for pages with pubDate)
+const schema = pubDate ? {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": title,
+  "description": desc,
+  "image": `${import.meta.env.BASE_URL}${image.startsWith('/') ? '' : '/'}${image}`,
+  "author": {
+    "@type": "Person",
+    "name": "Abraham Flores"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Abraham Flores — Personal Website",
+    "logo": {
+      "@type": "ImageObject",
+      "url": `${import.meta.env.BASE_URL}/favicon.ico`
+    }
+  },
+  "datePublished": pubDate,
+  "dateModified": pubDate,
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": url
+  }
+} : null;
 ---
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -71,6 +99,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
+        <!-- Article Schema (JSON-LD) for blog posts -->
+    {schema && (<script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />)}
   </head>
   
   <body class="page">
