@@ -8,4 +8,8 @@ const { publicationDate, tagList } = Astro.props;
 <div class="blogMeta">
     <BlogPostPublicationDate publicationDate={publicationDate}/>
     <BlogPostTags tagList={tagList}/>
+    <a href="/PersonalWebsite/rss.xml" class="rss-subscribe" title="Subscribe to RSS feed">
+        <span>📡</span>
+        <span class="sr-only">Subscribe to RSS feed</span>
+    </a>
 </div>

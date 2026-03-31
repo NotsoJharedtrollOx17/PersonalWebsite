@@ -5,7 +5,8 @@ Repo hosting the source of my personal website written with the aid of Astro JS 
 - `release` -> The website with changes published from `development`.
 - `development` -> Steady and stable improvements that don't break vital functionality. - `experimental` -> Unstable, breaking changes that disrupt `development`.
 
-## Credits- *Abraham Jhared Flores Azcona (NotsoJharedtrollOx17).*
+## Credits
+- *Abraham Jhared Flores Azcona (NotsoJharedtrollOx17).*
 - *ChatGPT.*
 - *Cline (AI Assistant).*
 - *Google Gemini.*
