@@ -1,6 +1,7 @@
 ---
 import BlogPostPublicationDate from '@components/BlogPostPublicationDate.astro';
 import BlogPostTags from '@components/BlogPostTags.astro';
+import BlogPostRSSButton from '@components/BlogPostRSSButton.astro';
 
 const { publicationDate, tagList } = Astro.props;
 ---
@@ -8,8 +9,5 @@ const { publicationDate, tagList } = Astro.props;
 <div class="blogMeta">
     <BlogPostPublicationDate publicationDate={publicationDate}/>
     <BlogPostTags tagList={tagList}/>
-    <a href="/PersonalWebsite/rss.xml" class="rss-subscribe" title="Subscribe to RSS feed">
-        <span>📡</span>
-        <span class="sr-only">Subscribe to RSS feed</span>
-    </a>
+    <BlogPostRSSButton/>
 </div>
