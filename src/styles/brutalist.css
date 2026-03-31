@@ -274,10 +274,6 @@ article a:hover {
   font-style: italic;
 }
 
-.themeToggle:hover {
-  opacity: 0.7;
-}
-
 /* --------------------------------------------------
   MARK: TYPOGRAPHY-------------------------------------------------- */
 
@@ -472,7 +468,8 @@ p, li {
   nav {
     position: static;
     justify-content: center;
-    margin: var(--gap-lg) 0;
+    margin-top: var(--gap-lg);
+    margin-bottom: var(--gap-md);
   }
 
   p, li {
