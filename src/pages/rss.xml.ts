@@ -8,7 +8,7 @@ export async function GET(context: APIContext) {
   const posts = blogPosts.filter(post => !post.data.draft);
   return rss({
     title: 'Abraham Flores | R&D Blog',
-    description: 'AI Agents and System Architecture Research',
+    description: 'Applied AI, systems engineering, and reproducible machine learning research',
     site: context.site,
     items: posts.map((post) => ({
       title: post.data.title,

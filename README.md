@@ -1,9 +1,10 @@
 # PersonalWebsite
-Repo hosting the source of my personal website written with the aid of Astro JS and ChatGPT. [You can access my website here!!!](https://notsojharedtrollox17.github.io/PersonalWebsite)
+Source for my personal website, built with Astro and TypeScript. [Visit the deployed website.](https://notsojharedtrollox17.github.io/PersonalWebsite)
 
 ## Code Branches
-- `release` -> The website with changes published from `development`.
-- `development` -> Steady and stable improvements that don't break vital functionality. - `experimental` -> Unstable, breaking changes that disrupt `development`.
+- `release` -> The website version published from `development`.
+- `development` -> Stable improvements intended for the next release.
+- `experimental` -> Unstable or breaking experiments that are not ready for `development`.
 
 ## Credits
 - *Abraham Jhared Flores Azcona (NotsoJharedtrollOx17).*

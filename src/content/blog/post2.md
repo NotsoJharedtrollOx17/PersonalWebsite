@@ -1,48 +1,59 @@
 ---
-title: "On Partialy Replicating Anthropic's Emotion Vectors"
-description: "Briefing on my independent replication attempt at Anthropic's publication regarding Emotion Vectors on Large Language Models."
+title: "On Partially Replicating Anthropic's Emotion Vectors"
+description: "A brief account of my resource-constrained partial replication of selected emotion-vector analyses in GPT-2 Medium and Gemma 4 E2B."
 pubDate: 2026-05-16
+updatedDate: 2026-08-11
 tags: ["LLM", "Anthropic", "Research", "Replication", "Independent", "Emotion Vectors"]
 ---
 
 ## Introduction
 
-In this blog entry, I describe my experience attempting to replicate certain sections of
-Anthropic's Emotion Vectors. Overall, the construct known as emotion vectors can be extracted from such an old model like _openai-community/gpt-2-medium_, and the captured semantical understanding of such emotion can influence the output of the model. What it is cool is that
-we alos found substantial evidence of this construct existing on _google/gemma-4-E2B_, which provides further confirmation of the findings found in a prior replication hosted on HuggingFace.
+This project began with a simple question: could selected findings from Anthropic's study of emotion-related representations be reproduced in smaller, open-weight language models?
 
-Our findings strongly suggest that emotion vectors may be a universal property of transformer-based LLMs, and we may utilize these vectors as a monitoring mechanism based on signals on aligned, or misaligned emotions. The complete analysis is [_found here_.](https://github.com/NotsoJharedtrollOx17/EmotionVectorExtraction-Gemma4-GPT2)
+I tested the broad extraction and analysis pipeline in _openai-community/gpt-2-medium_ and _google/gemma-4-E2B_. Across four configurations, I evaluated nine- and 20-emotion label sets using Logit Lens projections, PCA, cosine similarity, and activation steering. The results contain several qualitative similarities to earlier work, but they are partial, model-dependent, and limited to this corpus and pipeline. They do not establish that emotion vectors are universal, uniquely emotional, or evidence that a model subjectively experiences emotion.
 
-## Anthropic's Emotion Vectors
+The [project repository](https://github.com/NotsoJharedtrollOx17/EmotionVectorExtraction-Gemma4-GPT2) contains the code, data, plots, saved notebooks, and draft manuscript.
 
-Anthropic published a paper that proposed that emotion vectors can be extracted from Claude Sonnet 4.5 by generating 1000 stories per emotions, and then capture the hidden activations representing the semantical concept of that particular emotion. Afterwards, they performa various experiments to check underlying structures, and importantly, if these vectors can influence the output of the model. The short answer is they did, and their results are compelling evidence of what I can describe as a fascinating development.
+## Anthropic's Emotion-Concepts Study
 
-Their PCA Projection plot roughly approximates a widely accepted psychological construct reflect the way we interpret human emotions. To our interest, the x-axis of this particular plot helps our understanding of what can we colloquialy consider a "positive" or "negative" emotion Likewise, their emotion steering heatmaps offer evidence regarding the effects of these vectors over the expected tokens. And the steered text outputs were convincing of the causal effects. 
+Anthropic's [research article](https://www.anthropic.com/research/emotion-concepts-function) and [full paper](https://transformer-circuits.pub/2026/emotions/index.html) describe emotion vectors extracted from Claude Sonnet 4.5. In broad terms, the researchers generated stories associated with emotion concepts, recorded internal activations, and derived directions associated with those labels. They then studied where the directions activated, how they were organized, and whether adding them changed model behavior.
 
-From such a bold claim, I enacted a healthy level of skepticism. I exercised my discretion and tried to replicate such compelling findings. In today's day and age, it is imperative to close the gap on academic replicability, and with the age of AI, that breach may be easier to patch.
+The work is interesting because it combines observational analyses with interventions. A PCA projection can suggest geometric structure, but steering asks a different question: does changing an internal activation direction also change a model's subsequent output? Even then, an intervention effect does not by itself prove that the direction represents a uniquely emotional computation.
 
-## Other Replication Attemps
+## Building a Smaller Replication
 
-As a preliminary step, I expected that somebody had already replicated (or finished replicating) the emotion vector findings, and I was proven correct. A repo hosted on HuggingFace already replicated certain sections of the paper, consisting of the Logit Lens, the PCA Projection and the Cosine Similarity Matrix. In particular, with a dataset comprising of few stories total. Other replications found had varied story counts in their dataset but they converged on the fact that the extraction method worked. What I find peculiar is that either the consulted replications lacked the steering experiments, or they only reported their attempt without supporting citations of the plots.
+A [community replication on Gemma 4 E4B](https://huggingface.co/rain1955/emotion-vector-replication) had already reproduced selected Logit Lens, PCA, and cosine-similarity patterns. It provided a useful starting pipeline, but it did not include the steering experiments I most wanted to examine.
 
-In my case, I took a keen interest in replicating the steering experiments to empirically check if the steered text outputs indeed capture the underlying emotion vector. Simply put, that adding, for example ```happy``` will really generate a semantically happy story. In addition, we run our experiments with a list of 9, and 20, emotions to explore the semantical and causal strength of these constructs.
+I adapted that pipeline for GPT-2 Medium and Gemma 4 E2B. The cleaned dataset contains 2,000 generated stories: 100 for each of 20 emotions. I evaluated both a nine-emotion subset and the complete 20-emotion set, producing four model-and-label-set configurations. The committed plots were generated before ten accidental extra `calm` stories were removed, so a fresh run may differ slightly in its numerical values.
 
-## Our Findings
+This was intentionally a low-cost experiment. I used free-tier Google Colab T4 environments, selected one source-informed layer per model rather than running a layer sweep, and used a steering coefficient of 0.5 with local per-token residual-norm scaling. That coefficient is therefore not numerically identical to Anthropic's intervention convention. These choices made the project feasible, but they also limit the conclusions.
 
-I was perplex that our findings for both _openai-community/gpt-2-medium_ and _google/gemma-4-E2B_ did replicate the sleected sections from the Emotion Vectors publication. Logit Lens indeed displayed tokens that match words and word stems related to the emotion concept, in which _google/gemma-4-E2B_ showed multilingual and emoji tokens.
+## What I Observed
 
-The PCA projections of _openai-community/gpt-2-medium_ display a projection similar to the ones reported by Anthropic, while _google/gemma-4-E2B_ seems to invert the x-axis of this projection. In particular, the "positive" emotions are now grouped in the leftmost side of the plot.
+### Logit Lens
 
-Regarding the Cosine Similarity findings, our extracted vectors show an emergence of related-emotion clusters. This pattern is much more pronounced when calculating the similarity values for the list of 20 emotions. The clustering effect appears on both models.
+Projecting the extracted directions through each model's unembedding produced several label-related words and word stems. GPT-2 Medium's outputs were mostly concentrated in English, while Gemma 4 E2B also produced multilingual tokens, subwords, and emoji. Some tokens were fragmentary or unrelated, so this was evidence of label association rather than a clean semantic validation.
 
-Furthermore, our Emotion Steering experiments against the previously extracted Emotion Tokens show a noticeable effect across exact matches, basically that a steered emotion vector indeed increases the likelihood of its emotion tokens. For example, that the ```happy``` vector increases the likelihood of ```happy``` Tokens. For some reason, _openai-community/gpt-2-medium_ displays sparse activations of non-matching but related emotion tokens, while _google/gemma-4-E2B_ displays a conservative activation strength across exact matches. In particular, for 20 emotions, the ```disgusted``` vector decreases the likelihood of all tokens. Further research is needed to clarify why that is the case.
+### PCA and Cosine Similarity
 
-The steered text outputs of both models do capture the underlying emotional tone. It is interesting to note that the baseline _(unsteered)_ responses of _openai-community/gpt-2-medium_ seem broken at best, although steering forced the model to answer the prompt without an abrupt subject-matter change. We believe the underlying input prompt was an edge case that the model couldn't answer properly.
+Both models showed a partial valence-like separation along the first principal component: several positive-labeled directions appeared apart from groups related to fear, anger, and anxiety. Related labels also formed local cosine-similarity families, especially in the 20-emotion condition.
+
+The pattern was incomplete. Several labels did not follow a simple ordering, and the second principal component did not consistently resemble arousal. Gemma's displayed PCA axis also appeared reversed relative to another plot, but PCA component signs are arbitrary; the reversal is not evidence of an inverted emotional geometry.
+
+### Activation Steering
+
+Adding the extracted directions changed next-token probabilities and sampled continuations in both models. GPT-2 Medium often showed sharper token-level effects, but its generations were repetitive and brittle. Gemma 4 E2B generally showed more moderate effects and more multilingual or emoji-heavy token associations.
+
+These interventions demonstrate sensitivity to the implemented directions. They do not demonstrate clean emotional control: the effects depended on the model, prompt, direction, and stochastic decoding, and some generations degraded under steering.
+
+## What the Replication Does Not Establish
+
+The study used generated, uncurated stories and did not include external affect ratings, matched random directions, shuffled labels, a layer sweep, or repeated generations across fixed seeds. The token-level steering diagnostic also reused tokens selected from each direction's own Logit Lens projection, coupling part of the evaluation to the vectors under test.
+
+For those reasons, I describe the work as a first-pass, resource-constrained partial replication. It shows that the extraction-and-intervention procedure transfers to these two additional models and produces several recurring qualitative patterns. It does not establish a universal affective geometry or a monitoring system for a model's "emotional reaction."
 
 ## Lessons Learned
 
-Overall, I'm satisfied with the achievements obtained by my replication attempt. They validated the results obtained from the community, and to a degree, specific claims reported by Anthropic. It is fascinating to obtain evidence that this construct of emotion vectors can affect the responses of a model. This has several implications on model alignment and model supervision. We can now repurpose the same emotion vectors as observational tools, and as interventional probes, to monitor the "emotional reaction" of the model against a request.
+The hardest engineering task was extending the borrowed extraction pipeline into a reproducible steering workflow across two model families. ChatGPT and Gemini helped accelerate implementation and debugging, but the scientific value still depended on inspecting the code, preserving artifacts, documenting differences from the source method, and narrowing claims when the controls did not support them.
 
-I sincerely believe the main challenge was extending the data pipeline from the HugginFace repo into the desired steering feature. There should be no doubt that LLM tools like ChatGPT and Gemini helped accelerate the development time of the experiment setup. What is left to do is to replicate the reported results utilizing the original emotion list of Anthropic. A replication cited in the writing obtained results similar to Anthropic with their 171 emotion list, which further suppports Anthropic's conclusions with greater resolution.
-
-Our limited scope still has utility for those willing to replicate these experiments. I'm convinced that this a small grain of sand into our collaborative effort of validating academic research. With this, the field of Mechanistic Interpretability may advance further into the line of investigation regarding these Emotion Vectors, which may dictate further scrutiny of LLMs from a phychological perspective.
+That last step was the most useful lesson. A replication is not valuable because every plot looks like the original. It is valuable when the procedure, mismatches, partial agreements, failures, and limitations are visible enough for someone else to inspect and challenge.
