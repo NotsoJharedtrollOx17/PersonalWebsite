@@ -158,10 +158,29 @@
 /* Remove top padding from prose inside blog posts to avoid double padding */
 article.blogPost > .prose {
   padding-top: 0;
+  padding-bottom: 0;
 }
 
 /* Remove top margin from first element in blogContent to reduce gap between header and content */
 article.blogPost .blogContent > :first-child {
+  margin-top: 0;
+}
+
+/* Let the related-post footer follow the conclusion instead of inheriting a
+   full prose section's trailing paragraph and padding space. */
+article.blogPost .blogContent > :last-child {
+  margin-bottom: 0;
+}
+
+/* Keep the post footer aligned with the reading column without treating it as a new page section. */
+.relatedPosts {
+  max-width: 50ch;
+  margin: 0 auto;
+  padding-top: var(--gap-md);
+  padding-bottom: var(--gap-xl);
+}
+
+.relatedPosts h2 {
   margin-top: 0;
 }
 
