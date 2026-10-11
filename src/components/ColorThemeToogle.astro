@@ -1,7 +1,7 @@
 ---
 ---
 
-<button id="theme-toggle" class="themeToggle">
+<button id="theme-toggle" class="themeToggle" type="button" aria-label="Switch color theme">
     <span id="theme-label"></span>
 </button>
 <script is:inline>
@@ -12,6 +12,7 @@
     function updateToggleLabel() {
         const isDark = root.classList.contains('dark');
         toggleLabel.textContent = isDark ? 'Light' : 'Dark';
+        toggleButton.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
     }
 
     function saveCurrentTheme() {

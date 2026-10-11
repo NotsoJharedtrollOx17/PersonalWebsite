@@ -43,10 +43,12 @@
   cursor: pointer; /* Added explicit pointer cursor */
 }
 
-.resume-link a:hover {
-  color: var(--color-highlight);
-  text-decoration: underline;
-  text-decoration-color: var(--color-highlight);
+@media (hover: hover) and (pointer: fine) {
+  .resume-link a:hover {
+    color: var(--color-highlight);
+    text-decoration: underline;
+    text-decoration-color: var(--color-highlight);
+  }
 }
 
 /* Optional: Style the icon */
@@ -70,11 +72,7 @@
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.blogTag:hover {
-  background-color: var(--color-highlight);
-  color: var(--color-bg);
-  border: 0
-}
+
 
 .blogMeta {
   display: flex;
@@ -106,10 +104,12 @@
   vertical-align: middle;
 }
 
-.rss-subscribe:hover {
-  background-color: var(--color-highlight);
-  color: #f2f2f2;
-  border-color: var(--color-highlight);
+@media (hover: hover) and (pointer: fine) {
+  .rss-subscribe:hover {
+    background-color: var(--color-highlight);
+    color: #f2f2f2;
+    border-color: var(--color-highlight);
+  }
 }
 
 .rss-subscribe .sr-only {
@@ -259,9 +259,11 @@ nav a {
   color: var(--color-text);
 }
 
-nav a:hover {
-  text-decoration: underline;
-  color: var(--color-highlight);
+@media (hover: hover) and (pointer: fine) {
+  nav a:hover {
+    text-decoration: underline;
+    color: var(--color-highlight);
+  }
 }
 
 /* Markdown article formatting */
@@ -273,9 +275,52 @@ article a {
   color: var(--color-external-link);
 }
 
-article a:hover {
-  text-decoration: underline;
+@media (hover: hover) and (pointer: fine) {
+  article a:hover {
+    text-decoration: underline;
+    color: var(--color-highlight);
+  }
+}
+
+/* Pointer feedback ends on release; keyboard focus stays visible. */
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-highlight);
+  outline-offset: 4px;
+}
+
+nav a,
+.themeToggle,
+.contactInformation a,
+.resume-link a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.rss-subscribe {
+  min-width: 44px;
+  min-height: 44px;
+  justify-content: center;
+}
+
+nav a:active,
+.themeToggle:active,
+.contactInformation a:active,
+.resume-link a:active,
+article a:active {
   color: var(--color-highlight);
+}
+
+.rss-subscribe:active {
+  background-color: var(--color-highlight);
+  color: var(--color-bg);
+  border-color: var(--color-highlight);
 }
 
 /* Theme Toggle Button */
@@ -414,9 +459,11 @@ p, li {
   color: var(--color-external-link);
 }
 
-.contactInformation a:hover {
-  text-decoration: underline;
-  color: var(--color-highlight);
+@media (hover: hover) and (pointer: fine) {
+  .contactInformation a:hover {
+    text-decoration: underline;
+    color: var(--color-highlight);
+  }
 }
 
 .contactInformation span {
