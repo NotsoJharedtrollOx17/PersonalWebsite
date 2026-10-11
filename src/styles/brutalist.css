@@ -21,7 +21,7 @@
   --color-text: #f2f2f2;
   --color-muted: #ececec;
   --color-line: #f2f2f2; /* softened for better contrast */
-  --color-external-link: rgb(17, 93, 245);
+  --color-external-link: #5c9dff;
 }
 
 /* PDF Resume Link - Brutalist styling */
