@@ -21,7 +21,7 @@ const { Content } = await render(cvEntry);
 
 <BaseLayout 
   pageTitle="CV — Abraham J. Flores A."
-  description="Research-oriented curriculum vitae of Abraham J. Flores Azcona"
+  description="General resume of Abraham J. Flores Azcona, AI/ML systems engineer, with research, engineering, projects, and presentations"
   pubDate="2026-03-27"
   url={`${import.meta.env.BASE_URL}/cv/`}
   ogImage={import.meta.env.BASE_URL + '/default-og.png'}
@@ -36,11 +36,11 @@ const { Content } = await render(cvEntry);
     <div class="left">
       <h1>{cvEntry.data.title}</h1>
       <div class="professionalAttributes">
-        <p>Open Innovation Engineer</p>
+        <p>AI/ML Systems Engineer</p>
       </div>
       <CVFileLink cvFileUrl={cvEntry.data.cvFileUrl} />
       <SlidingTicker 
-        slidingText="Representation Analysis Activation Steering Large Language Models Reproducible Machine Learning Python C/C++ TypeScript JavaScript PyTorch Hugging Face Transformers Scikit-Learn SciPy NumPy Pandas Matplotlib Plotly Linux Git GitHub Google Colab Jupyter Notebook LaTeX English Spanish"
+        slidingText="Representation Analysis Activation Steering Logit Lens PCA Cosine Similarity ROC Analysis Python C/C++ TypeScript JavaScript PyTorch Hugging Face Transformers Scikit-Learn SciPy NumPy Pandas Matplotlib Plotly Linux Windows Git GitHub SDK/API Integration Automated Testing Continuous Integration Google Colab Jupyter Notebook LaTeX Spanish English"
         time="62"
       />
     </div>
