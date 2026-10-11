@@ -3,6 +3,9 @@
  * Layout Component that sets relevant HTML data and page styling  * for the Page Component.
  */
 import "@styles/brutalist.css"; // ! ALWAYS IMPORT CSS FILES INTO THE ASTRO FRONTMATTER
+import "@styles/fonts.css";
+import interFontUrl from "../assets/fonts/inter-latin.woff2?url";
+import headingFontUrl from "../assets/fonts/space-grotesk-latin.woff2?url";
 import { SITE_TITLE, SITE_DESCRIPTION } from '@consts';
 
 const { pageTitle, description, ogImage, pubDate, updatedDate, url } = Astro.props;
@@ -80,9 +83,8 @@ const schema = pubDate ? {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="canonical" href={canonicalURL} />
     <link rel="icon" href={`${import.meta.env.BASE_URL}/favicon.ico`}/>  
-    <link rel="preconnect" href="https://fonts.googleapis.com" />  
-    <link        rel="stylesheet"  
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Space+Grotesk:wght@600;700;800&display=swap"      />
+    <link rel="preload" href={interFontUrl} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={headingFontUrl} as="font" type="font/woff2" crossorigin />
     
     <!-- SEO & OpenGraph Metadata -->
     <title>{title}</title>

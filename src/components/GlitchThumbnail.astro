@@ -5,6 +5,13 @@ import GlitchInTheSystem from "@images/glitchInTheSystem.png";
 
 <div class="glitchThumbnail">
     <Image src={GlitchInTheSystem} 
-        alt="Thumbnail with blue and green distortions." 
+        alt="Thumbnail with blue and green distortions."
+        width={730}
+        widths={[320, 480, 730]}
+        sizes="(max-width: 900px) min(50ch, calc(100vw - 2rem)), (max-width: 1480px) calc(50vw - 9rem), 596px"
+        format="webp"
+        quality={75}
+        loading="lazy"
+        decoding="async"
     />
 </div>

@@ -5,6 +5,12 @@ import FacialPortrait from "@images/facialPortrait.jpg";
 
 <div class="facialThumbnail">
     <Image src={FacialPortrait}
-        alt="My Portrait at Starfield Suwon Plaza where I'm posing at three quarters." 
+        alt="My Portrait at Starfield Suwon Plaza where I'm posing at three quarters."
+        width={640}
+        widths={[320, 480, 640, 960, 1280]}
+        sizes="(max-width: 900px) min(50ch, calc(100vw - 2rem)), (max-width: 1480px) calc(50vw - 9rem), 596px"
+        format="webp"
+        quality={78}
+        priority
     />
 </div>
