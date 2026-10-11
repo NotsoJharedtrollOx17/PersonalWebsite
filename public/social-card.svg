@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title">
+  <title id="title">Abraham Flores — AI/ML Systems Engineer</title>
+  <rect width="1200" height="630" fill="#fff" />
+  <g transform="translate(80 155) scale(5)">
+    <rect width="64" height="64" fill="#0e0e0e" />
+    <path fill="#fff" fill-rule="evenodd" d="M8 48V12h20v36h-8V36h-4v12H8Zm8-28v8h4v-8h-4Z" />
+    <path fill="#fff" d="M36 12h20v8H44v8h8v8h-8v12h-8V12Z" />
+    <path fill="#ff6600" d="M8 54h48v4H8z" />
+  </g>
+  <g fill="#0e0e0e" font-family="Arial, sans-serif">
+    <text x="464" y="270" font-size="76" font-weight="bold" letter-spacing="2">ABRAHAM</text>
+    <text x="464" y="356" font-size="76" font-weight="bold" letter-spacing="2">FLORES</text>
+    <text x="468" y="418" font-size="24" letter-spacing="2">AI/ML SYSTEMS ENGINEER</text>
+  </g>
+  <path fill="#ff6600" d="M80 550h1040v8H80z" />
+</svg>

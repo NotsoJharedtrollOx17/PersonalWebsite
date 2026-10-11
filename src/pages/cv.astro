@@ -1,4 +1,22 @@
 ---
-// Keep existing bookmarks working after the Resume rename.
-return Astro.redirect(`${import.meta.env.BASE_URL}/resume`, 301);
+import SiteIcons from "@components/SiteIcons.astro";
+
+// A static redirect needs its own icon links to avoid browser root fallback.
+const resumeURL = `${import.meta.env.BASE_URL}/resume`;
 ---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Continue to Resume — Abraham Flores</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <SiteIcons />
+    <meta http-equiv="refresh" content={`0;url=${resumeURL}`} />
+    <meta name="robots" content="noindex" />
+    <link rel="canonical" href={new URL(resumeURL, Astro.site)} />
+  </head>
+  <body>
+    <a href={resumeURL}>Continue to Resume</a>
+  </body>
+</html>
