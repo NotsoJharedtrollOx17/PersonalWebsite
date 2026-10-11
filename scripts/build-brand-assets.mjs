@@ -1,8 +1,11 @@
-import { readFile, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import sharp from "sharp";
 
 const publicURL = new URL("../public/", import.meta.url);
 const logo = await readFile(new URL("logo.svg", publicURL));
+const brandURL = new URL("../src/assets/brand/", import.meta.url);
+await mkdir(brandURL, { recursive: true });
+await writeFile(new URL("af-monogram.svg", brandURL), logo);
 
 await writeFile(new URL("favicon.svg", publicURL), logo);
 for (const [filename, size] of [["logo-512.png", 512], ["apple-touch-icon.png", 180]]) {
@@ -27,6 +30,8 @@ for (let index = 0; index < sizes.length; index++) {
   directory.writeUInt32LE(offset, entry + 12);
   offset += images[index].length;
 }
-await writeFile(new URL("favicon.ico", publicURL), Buffer.concat([directory, ...images]));
+const ico = Buffer.concat([directory, ...images]);
+await writeFile(new URL("favicon.ico", publicURL), ico);
+await writeFile(new URL("af-monogram.ico", brandURL), ico);
 await writeFile(new URL("default-og.png", publicURL), await sharp(await readFile(new URL("social-card.svg", publicURL))).png().toBuffer());
 console.log("Generated AF favicon, touch icon, logo, and sharing preview.");
