@@ -5,7 +5,7 @@
 import "@styles/brutalist.css"; // ! ALWAYS IMPORT CSS FILES INTO THE ASTRO FRONTMATTER
 import { SITE_TITLE, SITE_DESCRIPTION } from '@consts';
 
-const { pageTitle, description, ogImage, pubDate, url } = Astro.props;
+const { pageTitle, description, ogImage, pubDate, updatedDate, url } = Astro.props;
 // Set default values if not provided
 const title = pageTitle || SITE_TITLE;
 const desc = description || SITE_DESCRIPTION;
@@ -32,7 +32,7 @@ const schema = pubDate ? {
     }
   },
   "datePublished": pubDate,
-  "dateModified": pubDate,
+  "dateModified": updatedDate || pubDate,
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": url
