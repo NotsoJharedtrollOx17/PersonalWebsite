@@ -21,6 +21,8 @@ Astro generates responsive WebP variants from the original images in `src/assets
 Inter and Space Grotesk are hosted locally as Latin variable WOFF2 fonts under `src/assets/fonts/`, with `font-display: swap`. Their SIL Open Font License files are retained in `public/fonts/`. Font sources and performance measurements are recorded in `agent-notes/resume-mobile-performance.md`.
 
 ## Credits
+The site's AF monogram uses geometric white initials on a black square with the orange accent from the ticker. `public/logo.svg` is its source; `public/social-card.svg` supplies the sharing preview. After editing them, regenerate the favicon, touch icon, and PNG derivatives with `node scripts/build-brand-assets.mjs`, then run `npm run build`. All pages, including the old `/cv` redirect, share base-aware icon links through `SiteIcons.astro`.
+
 - *Abraham Jhared Flores Azcona (NotsoJharedtrollOx17).*
 - *ChatGPT.*
 - *Cline (AI Assistant).*
