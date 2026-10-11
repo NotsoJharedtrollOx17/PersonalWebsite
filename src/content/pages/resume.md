@@ -1,6 +1,6 @@
 ---
-title: "CV"
-cvFileUrl: "/PersonalWebsite/Abraham_Flores_Azcona_Resume_General.pdf"
+title: "Resume"
+resumeFileUrl: "/PersonalWebsite/Abraham_Flores_Azcona_Resume_General.pdf"
 ---
 
 ## Summary

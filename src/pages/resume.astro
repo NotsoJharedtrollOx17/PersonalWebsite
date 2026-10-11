@@ -1,0 +1,54 @@
+---
+/**
+ * Page Component that loads the 'resume.md' file into the webpage.
+ */
+import { getEntry, render } from "astro:content";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import ColorThemeToogle from "@components/ColorThemeToogle.astro";
+import SlidingTicker from "@components/SlidingTicker.astro";
+import LocalNavLink from "@components/LocalNavLink.astro";
+import ResumeFileLink from "@components/ResumeFileLink.astro";
+
+// [1] Load .src/content/pages/resume.md into page
+const resumeEntry = await getEntry("pages", "resume");
+if (!resumeEntry) {
+  throw new Error("Resume entry not found in the pages collection");
+}
+
+// [2] Render the Markdown body to HTML as 'Content' Component
+const { Content } = await render(resumeEntry);
+---
+
+<BaseLayout 
+  pageTitle="CV — Abraham J. Flores A."
+  description="General resume of Abraham J. Flores Azcona, AI/ML systems engineer, with research, engineering, projects, and presentations"
+  url={`${import.meta.env.BASE_URL}/resume/`}
+  ogImage={import.meta.env.BASE_URL + '/default-og.png'}
+>
+  <nav>
+    <LocalNavLink navPage="">Home</LocalNavLink>
+    <LocalNavLink navPage="blog">Blog</LocalNavLink>
+    <ColorThemeToogle />
+  </nav>
+
+  <section class="split">
+    <div class="left">
+      <h1>{resumeEntry.data.title}</h1>
+      <div class="professionalAttributes">
+        <p>AI/ML Systems Engineer</p>
+      </div>
+      <ResumeFileLink resumeFileUrl={resumeEntry.data.resumeFileUrl} />
+      <SlidingTicker 
+        slidingText="Representation Analysis Activation Steering Logit Lens PCA Cosine Similarity ROC Analysis Python C/C++ TypeScript JavaScript PyTorch Hugging Face Transformers Scikit-Learn SciPy NumPy Pandas Matplotlib Plotly Linux Windows Git GitHub SDK/API Integration Automated Testing Continuous Integration Google Colab Jupyter Notebook LaTeX Spanish English"
+        time="62"
+      />
+    </div>
+
+    <div class="right">
+      <article>
+        <!-- * Rendered Markdown content -->
+        <Content />
+      </article>
+    </div>
+  </section>
+</BaseLayout>

@@ -24,8 +24,8 @@
   --color-external-link: rgb(17, 93, 245);
 }
 
-/* PDF CV Link - Brutalist styling */
-.cv-link {
+/* PDF Resume Link - Brutalist styling */
+.resume-link {
   margin: 1.5rem 0;
   font-family: var(--font-heading);
   font-weight: 600;
@@ -35,7 +35,7 @@
   gap: 0.5rem; /* Space between icon and text */
 }
 
-.cv-link a {
+.resume-link a {
   color: var(--color-external-link);
   text-decoration: none;
   display: inline-block;
@@ -43,14 +43,14 @@
   cursor: pointer; /* Added explicit pointer cursor */
 }
 
-.cv-link a:hover {
+.resume-link a:hover {
   color: var(--color-highlight);
   text-decoration: underline;
   text-decoration-color: var(--color-highlight);
 }
 
 /* Optional: Style the icon */
-.cv-link-icon {
+.resume-link-icon {
   font-size: 1.2em; /* Slightly larger than text */
   opacity: 0.8;
 }
@@ -148,7 +148,7 @@
   padding-bottom: var(--gap-xl);
 }
 
-/* Blog post header padding to match Home/CV spacing */
+/* Blog post header padding to match Home/Resume spacing */
 .blogPostHeader {
   padding-top: var(--gap-xl);
   padding-left: var(--gap-xl);
@@ -247,6 +247,7 @@ nav {
   display: flex;
   align-items: center;
   gap: 2rem;
+  flex-wrap: wrap;
   font-size: 0.75rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -266,6 +267,7 @@ nav a:hover {
 /* Markdown article formatting */
 
 article a {
+  overflow-wrap: anywhere;
   text-decoration: none;
   text-transform: uppercase;
   color: var(--color-external-link);
@@ -434,7 +436,7 @@ p, li {
 
 .split {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   min-height: 100vh;
 }
 
@@ -470,21 +472,18 @@ p, li {
     border-bottom: 1px solid var(--color-line);
   }
 
-    .split > .left,
-    .split > .right {
-      /* Apply blog-like constraint for mobile */
-      max-width: 50ch;
-      margin-left: auto;
-      margin-right: auto;
-            /* Use same vertical padding as blog prose */
-      padding-top: var(--gap-md);
-      padding-bottom: var(--gap-md);
-            /* Reset horizontal padding since we're using margin-auto */
-      padding-left: 0;
-      padding-right: 0;
-    }
+  .split > .left,
+  .split > .right {
+    width: 100%;
+    max-width: 50ch;
+    min-width: 0;
+    margin-inline: auto;
+    padding: var(--gap-md) 0;
+    text-align: left;
+  }
 
   nav {
+    gap: 0.75rem 1.5rem;
     position: static;
     justify-content: center;
     margin-top: var(--gap-lg);

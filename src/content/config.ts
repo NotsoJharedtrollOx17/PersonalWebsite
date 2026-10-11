@@ -21,7 +21,7 @@ export const collections = {
     loader: glob({ base: './src/content/pages', pattern: '**/*.{md,mdx}' }),
     schema: z.object({
       title: z.string(),
-      cvFileUrl: z.string().optional()
+      resumeFileUrl: z.string()
     })
   })
 };
