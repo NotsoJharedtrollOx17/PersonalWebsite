@@ -10,9 +10,9 @@ Source for my personal website, built with Astro and TypeScript. [Visit the depl
 
 The public resume uses the general master on `main` in the sibling `08-LocalCVResume` repository. Follow its `agent-docs/README.md` and canonical fact ledger when synchronizing `src/content/pages/resume.md`; the three university-specific variants are application documents.
 
-Copy `paper/build/Abraham_Flores_Azcona_Resume_General.pdf` from that repository to `public/Abraham_Flores_Azcona_Resume_General.pdf` and also replace `public/Abraham-Jhared-Flores-Azcona-CV.pdf` so existing links continue to serve the current document. Do not select `paper/build/main.pdf` by filename or modification time: it may contain the last university-specific build. The PDF in `agent-docs/` is a historical reference.
+Copy `tmp/Abraham_Flores_Azcona_Resume_General.pdf` from that repository to `public/Abraham_Flores_Azcona_Resume_General.pdf` and also replace `public/Abraham-Jhared-Flores-Azcona-CV.pdf` so existing links continue to serve the current document. Do not select `paper/build/main.pdf` by filename or modification time: it may contain the last university-specific build. The PDF in `agent-docs/` is a historical reference.
 
-After updating, run `npm run build`, check `/PersonalWebsite/resume` and its PDF link, and verify both public PDFs match the general source. `/PersonalWebsite/cv` redirects to the Resume page for existing bookmarks. The current sync uses resume commit `547b21d` and the final general PDF built September 4, 2026.
+After updating, run `npm run build`, check `/PersonalWebsite/resume` and its PDF link, and verify both public PDFs match the general source. `/PersonalWebsite/cv` redirects to the Resume page for existing bookmarks. The current sync uses resume commit `54272f7` and the validated general PDF built October 24, 2026. SHA-256: `5ad8ccfa9c2fd9ea40f7b5c963203967dad4ceb76246ee6fc4b3dc46215bf6f9`. Both public filenames contain these identical bytes.
 
 ## Images and Fonts
 
