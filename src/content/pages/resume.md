@@ -26,7 +26,7 @@ Samsung Research Tijuana\
 **Supervisor:** Jorge Alonso Pulido Trujillo
 
 - Developed and evaluated 10+ AI prototypes for resource-constrained consumer devices, spanning on-device ML, language and speech interfaces, and assistant functionality.
-- Integrate partner SDKs and APIs in C/C++, Python, TypeScript, and JavaScript; evaluate feasibility, platform constraints, and integration trade-offs.
+- Integrated a voice-identification SDK with Tizen TV and SmartRC microphones in C/C++; documented audio_io APIs and ARM32 constraints for internal proof-of-concept use and partner requirements.
 - Delivered four technical demonstrations to executive stakeholders during engineering workshops in South Korea, collaborating with international engineering teams and technology partners.
 
 ### Undergraduate Thesis Researcher
@@ -67,21 +67,21 @@ Universidad Autónoma de Baja California\
 
 Independent research project\
 *Apr 2026 – Jul 2026*\
-**Technical report and code:** [Technical report](https://raw.githubusercontent.com/NotsoJharedtrollOx17/EmotionVectorExtraction-Gemma4-GPT2/54e896b5f9b0154c1b5a1c1272b058889894a31e/PartialReplicationEmotionVectors.pdf) · [Replication repository](https://github.com/NotsoJharedtrollOx17/EmotionVectorExtraction-Gemma4-GPT2)
+**Technical report and code:** [Technical report](https://raw.githubusercontent.com/NotsoJharedtrollOx17/EmotionVectorExtraction-Gemma4-GPT2/d2f682d027db2ebb7fc0a50d7e75d697fe514e1d/PartialReplicationEmotionVectors.pdf) · [Replication repository](https://github.com/NotsoJharedtrollOx17/EmotionVectorExtraction-Gemma4-GPT2)
 
 - Conducted a resource-constrained partial replication of selected emotion-concept analyses in GPT-2 Medium and Gemma 4 E2B using nine- and 20-emotion configurations.
-- Released four reproducible Colab configurations and a cleaned public corpus of 2,000 generated stories; applied Logit Lens projections, PCA, cosine similarity, and activation interventions.
-- Observed partial PC1 valence-like separation, local similarity structure, and model- and prompt-dependent steering effects; treated the results as configuration-specific diagnostics rather than evidence of universal emotion representations.
+- Released four documented Colab configurations and 2,000 Gemini-generated stories; applied Logit Lens, PCA, cosine similarity, and activation steering.
+- Observed partial PC1 valence-like separation and local similarity groups; token-probability shifts and repetitive continuations did not independently validate emotional tone or coherence.
 
 ### iRig BlueBoard - BOSS Katana CLI Bridge
 
 Independent software project\
 *Aug 2026 – Sep 2026*\
-**Release evidence:** [v1.0.1 documentation tag](https://github.com/NotsoJharedtrollOx17/BlueBoard-BOSSKatana-Pedalboard/tree/v1.0.1)
+**Release evidence:** [v1.0.2 release](https://github.com/NotsoJharedtrollOx17/BlueBoard-BOSSKatana-Pedalboard/tree/v1.0.2)
 
 - Built a Python CLI that maps iRig BlueBoard BLE-MIDI input to controls on the original BOSS KATANA-100 MkI amplifier over USB-MIDI.
 - Implemented amplifier-state synchronization using MIDI System Exclusive (SysEx) messages, alongside MIDI routing, reconnect handling, and modular action dispatch.
-- Maintained 167 automated tests and Windows/Linux CI; completed hardware acceptance testing for the original KATANA-100 MkI on Windows and Linux Mint 22.2.
+- Released v1.0.2 with Windows/Linux CI; prior acceptance records document 167 tests and original KATANA-100 MkI hardware validation on Windows and Linux Mint 22.2.
 
 ## Selected Presentations
 
@@ -106,7 +106,7 @@ A. D. Dennis-Hernandez and **A. J. Flores-Azcona.** [Poster](https://github.com/
 - **Programming:** Python, C/C++, TypeScript, JavaScript.
 - **ML and Scientific Computing:** PyTorch, Hugging Face Transformers, scikit-learn, SciPy, NumPy, Pandas, Matplotlib, Plotly.
 - **Research Methods:** Representation Analysis, Activation Steering, Logit Lens, PCA, Cosine Similarity, ROC Analysis.
-- **Engineering and Research Tools:** Linux, Windows, Git/GitHub, SDK/API Integration, Automated Testing and Continuous Integration, Google Colab, Jupyter Notebook, LaTeX.
+- **Engineering and Research Tools:** Linux, Windows, Git/GitHub, OpenAI Codex, SDK/API Integration, Automated Testing and Continuous Integration, Google Colab, Jupyter Notebook, LaTeX.
 - **Languages:** Spanish (Native); English (TOEFL iBT: 5.5/6.0).
 
 ## Additional Training
